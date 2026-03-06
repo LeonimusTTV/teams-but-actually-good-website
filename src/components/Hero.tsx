@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Hero.css";
+import pluginsData from "../data/plugins.json";
+import themesData from "../data/themes.json";
 
 export default function Hero() {
+  const pluginCount = pluginsData.length;
+  const themeCount = themesData.length;
+
   return (
     <section className="hero">
       <div className="hero-bg">
@@ -35,12 +40,12 @@ export default function Hero() {
 
             <div className="hero-stats">
               <div className="stat">
-                <span className="stat-num">9</span>
+                <span className="stat-num">{pluginCount}</span>
                 <span className="stat-label">plugins</span>
               </div>
               <div className="stat-sep" />
               <div className="stat">
-                <span className="stat-num">8</span>
+                <span className="stat-num">{themeCount}</span>
                 <span className="stat-label">themes</span>
               </div>
               <div className="stat-sep" />

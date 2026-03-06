@@ -1,100 +1,8 @@
-import {
-  Bell,
-  Zap,
-  FileText,
-  Video,
-  BarChart2,
-  Keyboard,
-  Folder,
-  ShieldCheck,
-  MessageSquare,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import "./Plugins.css";
+import pluginsData from "../data/plugins.json";
+import { getIcon } from "../data/iconMap";
 
-interface Plugin {
-  name: string;
-  description: string;
-  Icon: LucideIcon;
-  category: string;
-  enabled: boolean;
-}
-
-const plugins: Plugin[] = [
-  {
-    name: "Better Notifications",
-    description:
-      "Custom sounds, filtering, and priority settings. Fewer interruptions.",
-    Icon: Bell,
-    category: "Productivity",
-    enabled: true,
-  },
-  {
-    name: "Quick Reactions",
-    description:
-      "Customizable reaction menu. React to messages without navigating three submenus.",
-    Icon: Zap,
-    category: "Communication",
-    enabled: true,
-  },
-  {
-    name: "Message Formatting",
-    description:
-      "Markdown support and custom text styles. Teams' default editor is bad. This fixes it.",
-    Icon: FileText,
-    category: "Communication",
-    enabled: true,
-  },
-  {
-    name: "Meeting Enhancer",
-    description:
-      "Auto-recording, better blur, custom layouts. Makes calls less painful.",
-    Icon: Video,
-    category: "Meetings",
-    enabled: false,
-  },
-  {
-    name: "Performance Monitor",
-    description:
-      "See what Teams is doing to your CPU in real time. Useful. Slightly horrifying.",
-    Icon: BarChart2,
-    category: "Utility",
-    enabled: false,
-  },
-  {
-    name: "Keyboard Shortcuts",
-    description:
-      "Dozens of extra shortcuts. If you like your mouse, this plugin will change that.",
-    Icon: Keyboard,
-    category: "Productivity",
-    enabled: true,
-  },
-  {
-    name: "File Manager",
-    description:
-      "Search and organize shared files without clicking through six tabs.",
-    Icon: Folder,
-    category: "Productivity",
-    enabled: false,
-  },
-  {
-    name: "Privacy Guard",
-    description:
-      "Blocks telemetry and tightens data controls. Microsoft won't be thrilled.",
-    Icon: ShieldCheck,
-    category: "Privacy",
-    enabled: true,
-  },
-  {
-    name: "Status Customizer",
-    description:
-      "Custom status messages and calendar-based auto-switching. Look busy when you're not.",
-    Icon: MessageSquare,
-    category: "Communication",
-    enabled: false,
-  },
-];
-
+const plugins = pluginsData;
 const enabledCount = plugins.filter((p) => p.enabled).length;
 const optionalCount = plugins.filter((p) => !p.enabled).length;
 
@@ -141,27 +49,32 @@ export default function Plugins() {
               <span className="plh-cat">Category</span>
               <span className="plh-status">Default</span>
             </div>
-            {plugins.map((plugin, i) => (
-              <div
-                key={plugin.name}
-                className={`pl-row${plugin.enabled ? " pl-row--on" : ""}`}
-              >
-                <span className="pl-num">{String(i + 1).padStart(2, "0")}</span>
-                <div className="pl-info">
-                  <div className="pl-name-row">
-                    <plugin.Icon className="pl-icon" strokeWidth={1.5} />
-                    <span className="pl-name">{plugin.name}</span>
-                  </div>
-                  <p className="pl-desc">{plugin.description}</p>
-                </div>
-                <span className="pl-cat">{plugin.category}</span>
-                <span
-                  className={`pl-toggle${plugin.enabled ? " pl-toggle--on" : ""}`}
+            {plugins.map((plugin, i) => {
+              const Icon = getIcon(plugin.icon);
+              return (
+                <div
+                  key={plugin.name}
+                  className={`pl-row${plugin.enabled ? " pl-row--on" : ""}`}
                 >
-                  {plugin.enabled ? "On" : "Off"}
-                </span>
-              </div>
-            ))}
+                  <span className="pl-num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="pl-info">
+                    <div className="pl-name-row">
+                      <Icon className="pl-icon" strokeWidth={1.5} />
+                      <span className="pl-name">{plugin.name}</span>
+                    </div>
+                    <p className="pl-desc">{plugin.description}</p>
+                  </div>
+                  <span className="pl-cat">{plugin.category}</span>
+                  <span
+                    className={`pl-toggle${plugin.enabled ? " pl-toggle--on" : ""}`}
+                  >
+                    {plugin.enabled ? "On" : "Off"}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

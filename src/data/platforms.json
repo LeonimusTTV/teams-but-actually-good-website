@@ -1,0 +1,23 @@
+[
+  {
+    "icon": "Monitor",
+    "name": "Windows",
+    "requirement": "Windows 10 / 11 · 64-bit",
+    "label": "Download for Windows",
+    "extension": ".exe"
+  },
+  {
+    "icon": "Apple",
+    "name": "macOS",
+    "requirement": "macOS 11 Big Sur or later",
+    "label": "Download for macOS",
+    "extension": ".dmg"
+  },
+  {
+    "icon": "Terminal",
+    "name": "Linux",
+    "requirement": "Most distributions · .deb and .rpm",
+    "label": "Download for Linux",
+    "extension": ".tar.gz"
+  }
+]

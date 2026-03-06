@@ -1,29 +1,11 @@
-import { Monitor, Apple, Terminal, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import "./Download.css";
+import platformsData from "../data/platforms.json";
+import pluginsData from "../data/plugins.json";
+import { getIcon } from "../data/iconMap";
 
-const platforms = [
-  {
-    Icon: Monitor,
-    name: "Windows",
-    req: "Windows 10 / 11 · 64-bit",
-    label: "Download for Windows",
-    ext: ".exe",
-  },
-  {
-    Icon: Apple,
-    name: "macOS",
-    req: "macOS 11 Big Sur or later",
-    label: "Download for macOS",
-    ext: ".dmg",
-  },
-  {
-    Icon: Terminal,
-    name: "Linux",
-    req: "Most distributions · .deb and .rpm",
-    label: "Download for Linux",
-    ext: ".tar.gz",
-  },
-];
+const platforms = platformsData;
+const pluginCount = pluginsData.length;
 
 export default function Download() {
   return (
@@ -50,23 +32,28 @@ export default function Download() {
       <section className="dl-platforms">
         <div className="container">
           <div className="platform-list">
-            {platforms.map(({ Icon, name, req, label, ext }) => (
-              <div className="platform-row" key={name}>
-                <div className="platform-left">
-                  <Icon className="platform-os-icon" strokeWidth={1} />
-                  <div className="platform-meta">
-                    <span className="platform-name">{name}</span>
-                    <span className="platform-req">{req}</span>
+            {platforms.map((platform) => {
+              const Icon = getIcon(platform.icon);
+              return (
+                <div className="platform-row" key={platform.name}>
+                  <div className="platform-left">
+                    <Icon className="platform-os-icon" strokeWidth={1} />
+                    <div className="platform-meta">
+                      <span className="platform-name">{platform.name}</span>
+                      <span className="platform-req">
+                        {platform.requirement}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="platform-right">
+                    <span className="platform-ext">{platform.extension}</span>
+                    <button className="btn btn-primary platform-btn">
+                      {platform.label} <ArrowRight size={14} />
+                    </button>
                   </div>
                 </div>
-                <div className="platform-right">
-                  <span className="platform-ext">{ext}</span>
-                  <button className="btn btn-primary platform-btn">
-                    {label} <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -122,7 +109,7 @@ export default function Download() {
                 <span className="tg">done</span>
               </div>
               <div className="tline tline-4">
-                <span className="ta">›</span> Applying 9 plugins…{" "}
+                <span className="ta">›</span> Applying {pluginCount} plugins…{" "}
                 <span className="tg">done</span>
               </div>
               <div className="tline tline-5">
