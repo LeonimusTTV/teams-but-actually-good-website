@@ -28,18 +28,21 @@ const platforms = [
 export default function Download() {
   return (
     <div className="download-page">
-
       {/* Hero */}
       <section className="dl-hero">
         <div className="dl-hero-glow" />
         <div className="container">
           <span className="dl-label">Download</span>
           <h1 className="dl-title">
-            One file.<br />
-            <em>Three platforms.</em><br />
+            One file.
+            <br />
+            <em>Three platforms.</em>
+            <br />
             Zero drama.
           </h1>
-          <p className="dl-sub">No account. No license key. It's just a file.</p>
+          <p className="dl-sub">
+            No account. No license key. It's just a file.
+          </p>
         </div>
       </section>
 
@@ -107,13 +110,32 @@ export default function Download() {
               <span className="dl-terminal-title">install.log</span>
             </div>
             <div className="dl-terminal-body">
-              <div className="tline tline-1"><span className="tp">$</span> teams-good-installer.exe</div>
-              <div className="tline tline-2"><span className="ta">›</span> Detecting Teams installation… <span className="tg">found</span></div>
-              <div className="tline tline-3"><span className="ta">›</span> Patching core modules… <span className="tg">done</span></div>
-              <div className="tline tline-4"><span className="ta">›</span> Applying 9 plugins… <span className="tg">done</span></div>
-              <div className="tline tline-5"><span className="ta">›</span> Blocking telemetry endpoints… <span className="tg">done</span></div>
-              <div className="tline tline-6"><span className="ta">›</span> <span className="tg">All done. Launch Teams to begin.</span></div>
-              <div className="tline tline-7"><span className="tp">$</span> <span className="t-cursor" /></div>
+              <div className="tline tline-1">
+                <span className="tp">$</span> teams-good-installer.exe
+              </div>
+              <div className="tline tline-2">
+                <span className="ta">›</span> Detecting Teams installation…{" "}
+                <span className="tg">found</span>
+              </div>
+              <div className="tline tline-3">
+                <span className="ta">›</span> Patching core modules…{" "}
+                <span className="tg">done</span>
+              </div>
+              <div className="tline tline-4">
+                <span className="ta">›</span> Applying 9 plugins…{" "}
+                <span className="tg">done</span>
+              </div>
+              <div className="tline tline-5">
+                <span className="ta">›</span> Blocking telemetry endpoints…{" "}
+                <span className="tg">done</span>
+              </div>
+              <div className="tline tline-6">
+                <span className="ta">›</span>{" "}
+                <span className="tg">All done. Launch Teams to begin.</span>
+              </div>
+              <div className="tline tline-7">
+                <span className="tp">$</span> <span className="t-cursor" />
+              </div>
             </div>
           </div>
         </div>
@@ -127,24 +149,35 @@ export default function Download() {
           <div className="faq-grid">
             <div className="faq-q">
               <h3>Is it safe?</h3>
-              <p>Yes. It's open source — read every line. All modifications run locally and don't touch Teams' servers.</p>
+              <p>
+                Yes. It's open source — read every line. All modifications run
+                locally and don't touch Teams' servers.
+              </p>
             </div>
             <div className="faq-q">
               <h3>Will Microsoft ban me?</h3>
-              <p>This is a client-side mod. It doesn't violate Teams' terms of service. Use your judgment in corporate environments.</p>
+              <p>
+                This is a client-side mod. It doesn't violate Teams' terms of
+                service. Use your judgment in corporate environments.
+              </p>
             </div>
             <div className="faq-q">
               <h3>How do updates work?</h3>
-              <p>There's a built-in updater. It'll notify you when something new is available. No action needed.</p>
+              <p>
+                There's a built-in updater. It'll notify you when something new
+                is available. No action needed.
+              </p>
             </div>
             <div className="faq-q">
               <h3>Can I uninstall it?</h3>
-              <p>Yes. Uninstall like any other app. Teams goes back to exactly how Microsoft intended — for better or worse.</p>
+              <p>
+                Yes. Uninstall like any other app. Teams goes back to exactly
+                how Microsoft intended — for better or worse.
+              </p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

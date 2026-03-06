@@ -10,7 +10,6 @@ export default function Hero() {
 
       <div className="container">
         <div className="hero-inner">
-
           {/* Left: text */}
           <div className="hero-text">
             <a
@@ -102,18 +101,27 @@ export default function Hero() {
 
                   <div className="chat-messages">
                     <div className="chat-msg">
-                      <div className="avatar" style={{ background: "#3b82f6" }}>A</div>
+                      <div className="avatar" style={{ background: "#3b82f6" }}>
+                        A
+                      </div>
                       <div className="msg-content">
                         <div className="msg-meta">
                           <span className="msg-name">Alice</span>
                           <span className="msg-time">9:41 AM</span>
                         </div>
-                        <p>Is it just me or does Teams actually run fast now??</p>
+                        <p>
+                          Is it just me or does Teams actually run fast now??
+                        </p>
                       </div>
                     </div>
 
                     <div className="chat-msg">
-                      <div className="avatar" style={{ background: "#22d3ee", color: "#060910" }}>B</div>
+                      <div
+                        className="avatar"
+                        style={{ background: "#22d3ee", color: "#060910" }}
+                      >
+                        B
+                      </div>
                       <div className="msg-content">
                         <div className="msg-meta">
                           <span className="msg-name">Bob</span>
@@ -124,18 +132,24 @@ export default function Hero() {
                     </div>
 
                     <div className="chat-msg">
-                      <div className="avatar" style={{ background: "#a78bfa" }}>C</div>
+                      <div className="avatar" style={{ background: "#a78bfa" }}>
+                        C
+                      </div>
                       <div className="msg-content">
                         <div className="msg-meta">
                           <span className="msg-name">Carol</span>
                           <span className="msg-time">9:43 AM</span>
                         </div>
-                        <p>No telemetry?? Microsoft is going to hate this lol</p>
+                        <p>
+                          No telemetry?? Microsoft is going to hate this lol
+                        </p>
                       </div>
                     </div>
 
                     <div className="chat-msg">
-                      <div className="avatar" style={{ background: "#f59e0b" }}>D</div>
+                      <div className="avatar" style={{ background: "#f59e0b" }}>
+                        D
+                      </div>
                       <div className="msg-content">
                         <div className="msg-meta">
                           <span className="msg-name">Dave</span>
@@ -147,7 +161,9 @@ export default function Hero() {
                   </div>
 
                   <div className="chat-input">
-                    <span className="chat-input-placeholder">Message #general</span>
+                    <span className="chat-input-placeholder">
+                      Message #general
+                    </span>
                   </div>
                 </div>
               </div>

@@ -247,9 +247,18 @@
   height: 10px;
   border-radius: 50%;
 }
-.tdot-red    { background: #ff5f57; }
-.tdot-yellow { background: #febc2e; }
-.tdot-green  { background: #28c840; }
+
+.tdot-red {
+  background: #ff5f57;
+}
+
+.tdot-yellow {
+  background: #febc2e;
+}
+
+.tdot-green {
+  background: #28c840;
+}
 
 .dl-terminal-title {
   font-size: 0.75rem;
@@ -270,21 +279,51 @@
   animation: tappear 0.01s forwards;
 }
 
-.tline-1 { animation-delay: 0.4s; }
-.tline-2 { animation-delay: 1.0s; }
-.tline-3 { animation-delay: 1.7s; }
-.tline-4 { animation-delay: 2.3s; }
-.tline-5 { animation-delay: 2.9s; }
-.tline-6 { animation-delay: 3.6s; }
-.tline-7 { animation-delay: 4.0s; }
-
-@keyframes tappear {
-  to { opacity: 1; }
+.tline-1 {
+  animation-delay: 0.4s;
 }
 
-.tp { color: var(--color-accent); }
-.ta { color: var(--color-text-tertiary); }
-.tg { color: #4ade80; }
+.tline-2 {
+  animation-delay: 1.0s;
+}
+
+.tline-3 {
+  animation-delay: 1.7s;
+}
+
+.tline-4 {
+  animation-delay: 2.3s;
+}
+
+.tline-5 {
+  animation-delay: 2.9s;
+}
+
+.tline-6 {
+  animation-delay: 3.6s;
+}
+
+.tline-7 {
+  animation-delay: 4.0s;
+}
+
+@keyframes tappear {
+  to {
+    opacity: 1;
+  }
+}
+
+.tp {
+  color: var(--color-accent);
+}
+
+.ta {
+  color: var(--color-text-tertiary);
+}
+
+.tg {
+  color: #4ade80;
+}
 
 .t-cursor {
   display: inline-block;
@@ -297,7 +336,9 @@
 }
 
 @keyframes tblink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* ── FAQ ── */

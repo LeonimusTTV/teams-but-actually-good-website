@@ -127,10 +127,7 @@ function MiniMockup({ colors }: MiniMockupProps) {
       style={{ background: colors.secondary, borderColor: colors.border }}
     >
       {/* Titlebar */}
-      <div
-        className="mini-bar"
-        style={{ borderBottomColor: colors.border }}
-      >
+      <div className="mini-bar" style={{ borderBottomColor: colors.border }}>
         <div className="mini-dots">
           <span className="mini-dot" style={{ background: "#ff5f57" }} />
           <span className="mini-dot" style={{ background: "#febc2e" }} />
@@ -154,7 +151,10 @@ function MiniMockup({ colors }: MiniMockupProps) {
       {/* Body */}
       <div className="mini-body">
         {/* Sidebar */}
-        <div className="mini-sidebar" style={{ borderRightColor: colors.border }}>
+        <div
+          className="mini-sidebar"
+          style={{ borderRightColor: colors.border }}
+        >
           <div
             className="mini-item mini-item--active"
             style={{ background: activeBg }}
@@ -168,17 +168,26 @@ function MiniMockup({ colors }: MiniMockupProps) {
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # standup
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # random
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # design
             </span>
           </div>
@@ -253,19 +262,19 @@ function MiniMockup({ colors }: MiniMockupProps) {
 export default function Themes() {
   return (
     <div className="themes-page">
-
       {/* Hero */}
       <section className="th-hero">
         <div className="th-hero-glow" />
         <div className="container">
           <span className="th-label">Themes</span>
           <h1 className="th-title">
-            8 ways to make<br />
+            8 ways to make
+            <br />
             <em>Teams less ugly.</em>
           </h1>
           <p className="th-sub">
-            Switch instantly from the settings panel. No restart. Your choice
-            is saved and applied every time Teams starts.
+            Switch instantly from the settings panel. No restart. Your choice is
+            saved and applied every time Teams starts.
           </p>
           <div className="th-swatches">
             {themes.map((t) => (
@@ -292,9 +301,7 @@ export default function Themes() {
                 <div className="theme-info">
                   <div className="theme-info-row">
                     <h3 className="theme-name">{theme.name}</h3>
-                    {theme.isLight && (
-                      <span className="theme-tag">Light</span>
-                    )}
+                    {theme.isLight && <span className="theme-tag">Light</span>}
                   </div>
                   <p className="theme-desc">{theme.description}</p>
                 </div>
@@ -311,17 +318,22 @@ export default function Themes() {
             <div className="th-info-card">
               <span className="th-info-num">01</span>
               <h3>Switching themes</h3>
-              <p>Open settings, pick a theme, done. Your choice is saved and applied every time Teams starts.</p>
+              <p>
+                Open settings, pick a theme, done. Your choice is saved and
+                applied every time Teams starts.
+              </p>
             </div>
             <div className="th-info-card">
               <span className="th-info-num">02</span>
               <h3>Custom themes</h3>
-              <p>A theme editor is in the works. You'll be able to build and share your own. Not done yet — but it's coming.</p>
+              <p>
+                A theme editor is in the works. You'll be able to build and
+                share your own. Not done yet — but it's coming.
+              </p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

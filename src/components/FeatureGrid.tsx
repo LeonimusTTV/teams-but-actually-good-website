@@ -1,4 +1,11 @@
-import { Paintbrush, Zap, Puzzle, Palette, ShieldCheck, Download } from "lucide-react";
+import {
+  Paintbrush,
+  Zap,
+  Puzzle,
+  Palette,
+  ShieldCheck,
+  Download,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import "./FeatureGrid.css";
 
