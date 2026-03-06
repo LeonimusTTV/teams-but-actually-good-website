@@ -1,0 +1,133 @@
+.features {
+  background-color: var(--color-bg);
+  padding: 6rem 0;
+}
+
+/* ── Header ── */
+.features-header {
+  margin-bottom: 3rem;
+}
+
+.features-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  margin-bottom: 0.875rem;
+}
+
+.features-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* ── Bordered grid — the whole grid has one outer border ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Each cell has right + bottom internal dividers */
+.feature-card {
+  padding: 2rem 1.875rem;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s ease;
+}
+
+.feature-card:hover {
+  background: var(--color-bg-secondary);
+}
+
+/* Remove right border on last column */
+.feature-card:nth-child(3n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row */
+.feature-card:nth-child(n+4) {
+  border-bottom: none;
+}
+
+/* ── Card internals ── */
+.feature-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.feature-num {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.feature-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--color-accent);
+  opacity: 0.8;
+}
+
+.feature-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.feature-card p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Re-wire borders for 2-col */
+  .feature-card:nth-child(3n) {
+    border-right: 1px solid var(--color-border);
+  }
+
+  .feature-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .feature-card:nth-child(n+4) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .feature-card:nth-child(n+5) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .feature-card:last-child {
+    border-bottom: none;
+  }
+}
