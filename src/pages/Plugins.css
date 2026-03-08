@@ -166,6 +166,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+
   .pl-list-header,
   .pl-row {
     grid-template-columns: 3rem 1fr 5rem;
@@ -178,6 +179,7 @@
 }
 
 @media (max-width: 560px) {
+
   .pl-list-header,
   .pl-row {
     grid-template-columns: 2.5rem 1fr;

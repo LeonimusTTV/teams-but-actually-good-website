@@ -60,7 +60,9 @@ export default function CustomCursor() {
     };
 
     const getSpinner = () =>
-      reticleRef.current?.querySelector<HTMLDivElement>(".cursor-reticle-spin") ?? null;
+      reticleRef.current?.querySelector<HTMLDivElement>(
+        ".cursor-reticle-spin",
+      ) ?? null;
 
     const onHoverIn = () => {
       isHovering = true;
@@ -96,7 +98,7 @@ export default function CustomCursor() {
       const target = e.target as Element;
       if (
         target.closest(
-          "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+          "a, button, [role='button'], input, textarea, select, [data-magnetic]",
         )
       ) {
         onHoverIn();
@@ -106,14 +108,14 @@ export default function CustomCursor() {
       const target = e.target as Element;
       if (
         target.closest(
-          "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+          "a, button, [role='button'], input, textarea, select, [data-magnetic]",
         )
       ) {
         if (!isHovering) return;
         const related = e.relatedTarget as Element | null;
         if (
           !related?.closest(
-            "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+            "a, button, [role='button'], input, textarea, select, [data-magnetic]",
           )
         ) {
           onHoverOut();

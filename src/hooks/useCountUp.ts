@@ -36,7 +36,7 @@ export function useCountUp(end: number, duration = 1400, startDelay = 0) {
           rafId = requestAnimationFrame(update);
         }, startDelay);
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     observer.observe(el);

@@ -1,5 +1,6 @@
 /* ─── Custom Cursor ─── */
 @media (pointer: fine) {
+
   *,
   *::before,
   *::after {
@@ -84,6 +85,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -108,16 +110,19 @@
   left: 0;
   border-width: 1.5px 0 0 1.5px;
 }
+
 .cursor-corner--tr {
   top: 0;
   right: 0;
   border-width: 1.5px 1.5px 0 0;
 }
+
 .cursor-corner--bl {
   bottom: 0;
   left: 0;
   border-width: 0 0 1.5px 1.5px;
 }
+
 .cursor-corner--br {
   bottom: 0;
   right: 0;

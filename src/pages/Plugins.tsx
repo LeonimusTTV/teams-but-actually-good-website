@@ -28,7 +28,6 @@ const infoCards = [
   },
 ];
 
-
 export default function Plugins() {
   return (
     <PageTransition>

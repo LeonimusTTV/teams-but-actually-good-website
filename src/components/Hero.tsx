@@ -60,11 +60,16 @@ function MagneticLink({
     const el = ref.current;
     if (!el) return;
     el.style.transform = "translate(0, 0)";
-    el.style.transition = "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+    el.style.transition =
+      "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
   };
 
   return (
-    <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <Link to={to} className={className}>
         {children}
       </Link>
@@ -134,10 +139,7 @@ export default function Hero() {
               aria-label="Teams is bad. We fixed it."
               variants={item}
             >
-              <span
-                className="hero-title-line1"
-                data-text="Teams is bad."
-              >
+              <span className="hero-title-line1" data-text="Teams is bad.">
                 <ScrambleText text="Teams is bad." delay={200} />
               </span>
               <br />
@@ -214,10 +216,31 @@ export default function Hero() {
 
                   <div className="chat-messages">
                     {[
-                      { color: "#3b82f6", name: "Alice", time: "9:41 AM", msg: "Is it just me or does Teams actually run fast now??" },
-                      { color: "#22d3ee", textColor: "#060910", name: "Bob", time: "9:42 AM", msg: "Installed the mod. Night and day difference 🙏" },
-                      { color: "#a78bfa", name: "Carol", time: "9:43 AM", msg: "No telemetry?? Microsoft is going to hate this lol" },
-                      { color: "#f59e0b", name: "Dave", time: "9:44 AM", msg: "Sending the link to the whole team rn" },
+                      {
+                        color: "#3b82f6",
+                        name: "Alice",
+                        time: "9:41 AM",
+                        msg: "Is it just me or does Teams actually run fast now??",
+                      },
+                      {
+                        color: "#22d3ee",
+                        textColor: "#060910",
+                        name: "Bob",
+                        time: "9:42 AM",
+                        msg: "Installed the mod. Night and day difference 🙏",
+                      },
+                      {
+                        color: "#a78bfa",
+                        name: "Carol",
+                        time: "9:43 AM",
+                        msg: "No telemetry?? Microsoft is going to hate this lol",
+                      },
+                      {
+                        color: "#f59e0b",
+                        name: "Dave",
+                        time: "9:44 AM",
+                        msg: "Sending the link to the whole team rn",
+                      },
                     ].map((m, i) => (
                       <div
                         key={m.name}

@@ -15,6 +15,8 @@ import {
   Monitor,
   Apple,
   Terminal,
+  Chrome,
+  Flame,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -35,6 +37,8 @@ const iconMap: Record<string, LucideIcon> = {
   Monitor,
   Apple,
   Terminal,
+  Chrome,
+  Flame,
 };
 
 export function getIcon(iconName: string): LucideIcon {

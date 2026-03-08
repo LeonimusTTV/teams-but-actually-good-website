@@ -39,15 +39,18 @@ export default function ParticleField() {
 
     resize();
 
-    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      size: Math.random() * 1.2 + 0.4,
-      alpha: Math.random() * 0.4 + 0.15,
-      baseAlpha: 0,
-    }));
+    const particles: Particle[] = Array.from(
+      { length: PARTICLE_COUNT },
+      () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 1.2 + 0.4,
+        alpha: Math.random() * 0.4 + 0.15,
+        baseAlpha: 0,
+      }),
+    );
 
     particles.forEach((p) => (p.baseAlpha = p.alpha));
 

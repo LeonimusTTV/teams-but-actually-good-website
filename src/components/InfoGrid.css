@@ -62,6 +62,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+
   .info-grid--3col,
   .info-grid--2col {
     grid-template-columns: 1fr;

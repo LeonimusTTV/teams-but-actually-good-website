@@ -18,14 +18,14 @@ export default function Download() {
           label="Download"
           title={
             <>
-              One file.
+              Every platform.
               <br />
-              <em>Three platforms.</em>
+              <em>One experience.</em>
               <br />
               Zero drama.
             </>
           }
-          subtitle="No account. No license key. It's just a file."
+          subtitle="No account. No license key. Pick your platform."
         />
 
         {/* Platform rows */}
@@ -74,21 +74,31 @@ export default function Download() {
             </Reveal>
             <div className="steps-rail">
               {[
-                { n: "01", title: "Download", desc: "Grab the file for your platform above." },
-                { n: "02", title: "Run it", desc: "Open the installer. No admin rights needed." },
-                { n: "03", title: "Open Teams", desc: "Launch Teams. It'll look different. That's the point." },
+                {
+                  n: "01",
+                  title: "Download",
+                  desc: "Grab the file for your platform above.",
+                },
+                {
+                  n: "02",
+                  title: "Run it",
+                  desc: "Open the installer. No admin rights needed.",
+                },
+                {
+                  n: "03",
+                  title: "Open Teams",
+                  desc: "Launch Teams. It'll look different. That's the point.",
+                },
               ].map((step, i) => (
                 <>
-                  <Reveal
-                    key={step.n}
-                    className="step-node"
-                    delay={i * 0.12}
-                  >
+                  <Reveal key={step.n} className="step-node" delay={i * 0.12}>
                     <span className="step-n">{step.n}</span>
                     <h3>{step.title}</h3>
                     <p>{step.desc}</p>
                   </Reveal>
-                  {i < 2 && <div className="step-connector" aria-hidden="true" />}
+                  {i < 2 && (
+                    <div className="step-connector" aria-hidden="true" />
+                  )}
                 </>
               ))}
             </div>

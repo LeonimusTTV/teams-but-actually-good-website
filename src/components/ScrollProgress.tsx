@@ -10,8 +10,7 @@ export default function ScrollProgress() {
 
     const onScroll = () => {
       const scrolled = document.documentElement.scrollTop;
-      const total =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
       const progress = total > 0 ? scrolled / total : 0;
       bar.style.transform = `scaleX(${progress})`;
     };

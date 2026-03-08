@@ -31,10 +31,25 @@
 
 /* Slowly shifting aurora gradient */
 @keyframes aurora-drift {
-  0% { transform: translate(0%, 0%) rotate(0deg); opacity: 0.6; }
-  33% { transform: translate(3%, 2%) rotate(5deg); opacity: 0.8; }
-  66% { transform: translate(-2%, 3%) rotate(-3deg); opacity: 0.65; }
-  100% { transform: translate(0%, 0%) rotate(0deg); opacity: 0.6; }
+  0% {
+    transform: translate(0%, 0%) rotate(0deg);
+    opacity: 0.6;
+  }
+
+  33% {
+    transform: translate(3%, 2%) rotate(5deg);
+    opacity: 0.8;
+  }
+
+  66% {
+    transform: translate(-2%, 3%) rotate(-3deg);
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translate(0%, 0%) rotate(0deg);
+    opacity: 0.6;
+  }
 }
 
 .hero-aurora {
@@ -90,8 +105,15 @@
 }
 
 @keyframes badge-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
-  50% { box-shadow: 0 0 0 5px rgba(34, 211, 238, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(34, 211, 238, 0);
+  }
 }
 
 .badge-dot {
@@ -122,34 +144,44 @@
 
 /* Glitch effect on the first title line */
 @keyframes glitch-main {
-  0%, 88%, 100% {
+
+  0%,
+  88%,
+  100% {
     transform: translate(0);
     text-shadow: none;
   }
+
   89% {
     transform: translate(-2px, 1px);
     text-shadow: 2px 0 rgba(255, 0, 64, 0.7), -2px 0 rgba(34, 211, 238, 0.7);
   }
+
   90% {
     transform: translate(2px, -1px);
     text-shadow: -2px 0 rgba(255, 0, 64, 0.7), 2px 0 rgba(34, 211, 238, 0.7);
   }
+
   91% {
     transform: translate(-1px, 0);
     text-shadow: 1px 0 rgba(255, 0, 64, 0.5), -1px 0 rgba(34, 211, 238, 0.5);
   }
+
   92% {
     transform: translate(1px, 1px);
     text-shadow: none;
   }
+
   93% {
     transform: translate(0);
     text-shadow: -3px 0 rgba(255, 0, 64, 0.4);
   }
+
   94% {
     transform: translate(2px, 0);
     text-shadow: 2px 0 rgba(34, 211, 238, 0.6), -2px 0 rgba(255, 0, 64, 0.6);
   }
+
   95% {
     transform: translate(0);
     text-shadow: none;
@@ -157,52 +189,68 @@
 }
 
 @keyframes glitch-before {
-  0%, 88%, 100% {
+
+  0%,
+  88%,
+  100% {
     clip-path: inset(0 0 100% 0);
     transform: translate(0);
   }
+
   89% {
     clip-path: inset(12% 0 62% 0);
     transform: translate(-4px, 0);
   }
+
   90% {
     clip-path: inset(65% 0 8% 0);
     transform: translate(4px, 0);
   }
+
   91% {
     clip-path: inset(38% 0 40% 0);
     transform: translate(-2px, 0);
   }
+
   92% {
     clip-path: inset(82% 0 3% 0);
     transform: translate(3px, 0);
   }
+
   94% {
     clip-path: inset(0 0 100% 0);
   }
 }
 
 @keyframes glitch-after {
-  0%, 89%, 100% {
+
+  0%,
+  89%,
+  100% {
     clip-path: inset(0 0 100% 0);
     transform: translate(0);
   }
+
   90% {
     clip-path: inset(28% 0 52% 0);
     transform: translate(4px, 0);
   }
+
   91% {
     clip-path: inset(72% 0 12% 0);
     transform: translate(-4px, 0);
   }
+
   92% {
     clip-path: inset(50% 0 28% 0);
     transform: translate(2px, 0);
   }
+
   93% {
     clip-path: inset(5% 0 85% 0);
     transform: translate(-3px, 0);
   }
+
   95% {
     clip-path: inset(0 0 100% 0);
   }
@@ -301,9 +349,12 @@
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: perspective(1100px) rotateY(-10deg) rotateX(4deg) scale(0.97) translateY(0px);
   }
+
   50% {
     transform: perspective(1100px) rotateY(-10deg) rotateX(4deg) scale(0.97) translateY(-10px);
   }
@@ -331,10 +382,23 @@
 
 /* Scan line sweeping down */
 @keyframes scan-sweep {
-  0% { top: -4px; opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 .mockup-scan {
@@ -353,13 +417,11 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.025),
-    rgba(0, 0, 0, 0.025) 1px,
-    transparent 1px,
-    transparent 2px
-  );
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.025),
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px,
+      transparent 2px);
   pointer-events: none;
   z-index: 10;
 }
@@ -400,9 +462,17 @@
   border-radius: 50%;
 }
 
-.mdot.red { background: #ff5f57; }
-.mdot.yellow { background: #febc2e; }
-.mdot.green { background: #28c840; }
+.mdot.red {
+  background: #ff5f57;
+}
+
+.mdot.yellow {
+  background: #febc2e;
+}
+
+.mdot.green {
+  background: #28c840;
+}
 
 .mockup-title {
   flex: 1;
@@ -413,8 +483,16 @@
 }
 
 @keyframes badge-blink {
-  0%, 90%, 100% { opacity: 1; }
-  95% { opacity: 0.3; }
+
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0.3;
+  }
 }
 
 .mod-badge {
@@ -530,6 +608,7 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

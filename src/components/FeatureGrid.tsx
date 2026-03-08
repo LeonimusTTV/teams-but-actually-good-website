@@ -30,7 +30,8 @@ function TiltCard({
     const el = e.currentTarget;
     el.style.setProperty("--tilt-x", "0deg");
     el.style.setProperty("--tilt-y", "0deg");
-    el.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease";
+    el.style.transition =
+      "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease";
   };
 
   return (

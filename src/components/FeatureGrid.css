@@ -35,16 +35,16 @@
 }
 
 /* The motion.div wrapper */
-.features-grid > div {
+.features-grid>div {
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
-.features-grid > div:nth-child(3n) {
+.features-grid>div:nth-child(3n) {
   border-right: none;
 }
 
-.features-grid > div:nth-child(n+4) {
+.features-grid>div:nth-child(n+4) {
   border-bottom: none;
 }
 
@@ -66,11 +66,9 @@
 .feature-shine {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at var(--shine-x, 50%) var(--shine-y, 50%),
-    rgba(34, 211, 238, 0.07) 0%,
-    transparent 65%
-  );
+  background: radial-gradient(circle at var(--shine-x, 50%) var(--shine-y, 50%),
+      rgba(34, 211, 238, 0.07) 0%,
+      transparent 65%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -136,19 +134,19 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .features-grid > div:nth-child(3n) {
+  .features-grid>div:nth-child(3n) {
     border-right: 1px solid var(--color-border);
   }
 
-  .features-grid > div:nth-child(2n) {
+  .features-grid>div:nth-child(2n) {
     border-right: none;
   }
 
-  .features-grid > div:nth-child(n+4) {
+  .features-grid>div:nth-child(n+4) {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .features-grid > div:nth-child(n+5) {
+  .features-grid>div:nth-child(n+5) {
     border-bottom: none;
   }
 }
@@ -158,12 +156,12 @@
     grid-template-columns: 1fr;
   }
 
-  .features-grid > div {
+  .features-grid>div {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
   }
 
-  .features-grid > div:last-child {
+  .features-grid>div:last-child {
     border-bottom: none;
   }
 }

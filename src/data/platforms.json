@@ -19,5 +19,19 @@
     "requirement": "Most distributions · .deb and .rpm",
     "label": "Download for Linux",
     "extension": ".tar.gz"
+  },
+  {
+    "icon": "Chrome",
+    "name": "Chrome",
+    "requirement": "Chrome / Chromium · v88+",
+    "label": "Add to Chrome",
+    "extension": ".crx"
+  },
+  {
+    "icon": "Flame",
+    "name": "Firefox",
+    "requirement": "Firefox · v78 or later",
+    "label": "Add to Firefox",
+    "extension": ".xpi"
   }
 ]

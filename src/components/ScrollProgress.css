@@ -4,12 +4,10 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-accent-dim) 0%,
-    var(--color-accent) 50%,
-    #67e8f9 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-accent-dim) 0%,
+      var(--color-accent) 50%,
+      #67e8f9 100%);
   transform-origin: left center;
   transform: scaleX(0);
   z-index: 100001;

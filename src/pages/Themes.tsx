@@ -64,23 +64,35 @@ function MiniMockup({ colors }: MiniMockupProps) {
             className="mini-item mini-item--active"
             style={{ background: activeBg }}
           >
-            <span className="mini-bullet" style={{ background: colors.primary }} />
+            <span
+              className="mini-bullet"
+              style={{ background: colors.primary }}
+            />
             <span className="mini-item-text" style={{ color: colors.primary }}>
               General
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # standup
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # random
             </span>
           </div>
           <div className="mini-item">
-            <span className="mini-item-text" style={{ color: colors.textMuted }}>
+            <span
+              className="mini-item-text"
+              style={{ color: colors.textMuted }}
+            >
               # design
             </span>
           </div>
@@ -95,23 +107,53 @@ function MiniMockup({ colors }: MiniMockupProps) {
           </div>
           <div className="mini-messages">
             <div className="mini-msg">
-              <div className="mini-avatar" style={{ background: colors.primary }}>A</div>
+              <div
+                className="mini-avatar"
+                style={{ background: colors.primary }}
+              >
+                A
+              </div>
               <div className="mini-msg-lines">
-                <div className="mini-line" style={{ background: colors.textMuted, width: "70%" }} />
-                <div className="mini-line" style={{ background: colors.textMuted, width: "45%" }} />
+                <div
+                  className="mini-line"
+                  style={{ background: colors.textMuted, width: "70%" }}
+                />
+                <div
+                  className="mini-line"
+                  style={{ background: colors.textMuted, width: "45%" }}
+                />
               </div>
             </div>
             <div className="mini-msg">
-              <div className="mini-avatar" style={{ background: colors.accent }}>B</div>
+              <div
+                className="mini-avatar"
+                style={{ background: colors.accent }}
+              >
+                B
+              </div>
               <div className="mini-msg-lines">
-                <div className="mini-line" style={{ background: colors.textMuted, width: "55%" }} />
+                <div
+                  className="mini-line"
+                  style={{ background: colors.textMuted, width: "55%" }}
+                />
               </div>
             </div>
             <div className="mini-msg">
-              <div className="mini-avatar" style={{ background: colors.primary, opacity: 0.6 }}>C</div>
+              <div
+                className="mini-avatar"
+                style={{ background: colors.primary, opacity: 0.6 }}
+              >
+                C
+              </div>
               <div className="mini-msg-lines">
-                <div className="mini-line" style={{ background: colors.textMuted, width: "80%" }} />
-                <div className="mini-line" style={{ background: colors.textMuted, width: "30%" }} />
+                <div
+                  className="mini-line"
+                  style={{ background: colors.textMuted, width: "80%" }}
+                />
+                <div
+                  className="mini-line"
+                  style={{ background: colors.textMuted, width: "30%" }}
+                />
               </div>
             </div>
           </div>
@@ -191,7 +233,11 @@ export default function Themes() {
                 title={t.name}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.35 + i * 0.04, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  delay: 0.35 + i * 0.04,
+                  duration: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               />
             ))}
           </div>
