@@ -211,7 +211,7 @@
 .hero-title-line1 {
   position: relative;
   display: inline-block;
-  animation: glitch-main 9s 1.4s infinite;
+  animation: glitch-main 9s 2.5s infinite;
 }
 
 .hero-title-line1::before,
@@ -226,16 +226,18 @@
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
+  /* Hidden by default — only revealed by the glitch keyframes */
+  clip-path: inset(0 0 100% 0);
 }
 
 .hero-title-line1::before {
   color: #ff0040;
-  animation: glitch-before 9s 1.4s infinite;
+  animation: glitch-before 9s 2.5s infinite;
 }
 
 .hero-title-line1::after {
   color: #22d3ee;
-  animation: glitch-after 9s 1.4s infinite;
+  animation: glitch-after 9s 2.5s infinite;
 }
 
 /* Description */

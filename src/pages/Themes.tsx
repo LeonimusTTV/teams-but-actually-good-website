@@ -140,36 +140,30 @@ function ThemeCard({ theme, index }: { theme: Theme; index: number }) {
   };
 
   return (
-    <motion.div
-      className="theme-card"
-      initial={{ opacity: 0, y: 30, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{
-        duration: 0.55,
-        delay: index * 0.07,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={
-        {
-          transform:
-            "perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",
-        } as React.CSSProperties
-      }
-    >
-      <div className="theme-preview-wrap">
-        <MiniMockup colors={theme.colors} />
-      </div>
-      <div className="theme-info">
-        <div className="theme-info-row">
-          <h3 className="theme-name">{theme.name}</h3>
-          {theme.isLight && <span className="theme-tag">Light</span>}
+    <Reveal delay={index * 0.07} y={30} scale={0.97}>
+      <div
+        className="theme-card"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={
+          {
+            transform:
+              "perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",
+          } as React.CSSProperties
+        }
+      >
+        <div className="theme-preview-wrap">
+          <MiniMockup colors={theme.colors} />
         </div>
-        <p className="theme-desc">{theme.description}</p>
+        <div className="theme-info">
+          <div className="theme-info-row">
+            <h3 className="theme-name">{theme.name}</h3>
+            {theme.isLight && <span className="theme-tag">Light</span>}
+          </div>
+          <p className="theme-desc">{theme.description}</p>
+        </div>
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 

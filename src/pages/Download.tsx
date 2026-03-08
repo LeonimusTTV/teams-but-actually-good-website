@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import "./Download.css";
 import platformsData from "../data/platforms.json";
 import pluginsData from "../data/plugins.json";
@@ -36,17 +35,12 @@ export default function Download() {
               {platforms.map((platform, i) => {
                 const Icon = getIcon(platform.icon);
                 return (
-                  <motion.div
+                  <Reveal
                     className="platform-row"
                     key={platform.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: i * 0.1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                    delay={i * 0.1}
+                    x={-20}
+                    y={0}
                   >
                     <div className="platform-left">
                       <Icon className="platform-os-icon" strokeWidth={1} />
@@ -63,7 +57,7 @@ export default function Download() {
                         {platform.label} <ArrowRight size={14} />
                       </button>
                     </div>
-                  </motion.div>
+                  </Reveal>
                 );
               })}
             </div>
@@ -85,18 +79,15 @@ export default function Download() {
                 { n: "03", title: "Open Teams", desc: "Launch Teams. It'll look different. That's the point." },
               ].map((step, i) => (
                 <>
-                  <motion.div
+                  <Reveal
                     key={step.n}
                     className="step-node"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                    delay={i * 0.12}
                   >
                     <span className="step-n">{step.n}</span>
                     <h3>{step.title}</h3>
                     <p>{step.desc}</p>
-                  </motion.div>
+                  </Reveal>
                   {i < 2 && <div className="step-connector" aria-hidden="true" />}
                 </>
               ))}
@@ -107,13 +98,7 @@ export default function Download() {
         {/* Terminal */}
         <section className="dl-terminal-section">
           <div className="container">
-            <motion.div
-              className="dl-terminal"
-              initial={{ opacity: 0, y: 30, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
+            <Reveal className="dl-terminal" scale={0.98}>
               <div className="dl-terminal-bar">
                 <div className="term-dots">
                   <span className="tdot tdot-red" />
@@ -150,7 +135,7 @@ export default function Download() {
                   <span className="tp">$</span> <span className="t-cursor" />
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
@@ -182,21 +167,10 @@ export default function Download() {
                   a: "Yes. Uninstall like any other app. Teams goes back to exactly how Microsoft intended — for better or worse.",
                 },
               ].map((item, i) => (
-                <motion.div
-                  key={item.q}
-                  className="faq-q"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: i * 0.09,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
+                <Reveal key={item.q} className="faq-q" delay={i * 0.09}>
                   <h3>{item.q}</h3>
                   <p>{item.a}</p>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
           </div>

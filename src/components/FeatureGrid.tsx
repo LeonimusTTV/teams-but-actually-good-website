@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import "./FeatureGrid.css";
 import { getFeatures } from "../data/getFeatures";
 import { getIcon } from "../data/iconMap";
@@ -35,12 +34,7 @@ function TiltCard({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <Reveal delay={delay}>
       <div
         className={className}
         onMouseMove={handleMouseMove}
@@ -48,7 +42,7 @@ function TiltCard({
       >
         {children}
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 

@@ -1,9 +1,9 @@
 import Hero from "../components/Hero";
 import FeatureGrid from "../components/FeatureGrid";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import "./Home.css";
 import PageTransition from "../components/PageTransition";
+import Reveal from "../components/Reveal";
 
 export default function Home() {
   return (
@@ -13,13 +13,7 @@ export default function Home() {
 
       <section className="cta-section">
         <div className="container">
-          <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <Reveal className="cta-content">
             <span className="cta-label">Ready to stop suffering?</span>
             <h2>Just install it.</h2>
             <p>
@@ -34,7 +28,7 @@ export default function Home() {
                 See what's included
               </Link>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </PageTransition>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import "./Plugins.css";
 import pluginsData from "../data/plugins.json";
 import { getIcon } from "../data/iconMap";
@@ -29,18 +28,6 @@ const infoCards = [
   },
 ];
 
-const rowVariants = {
-  hidden: { opacity: 0, x: -16 },
-  show: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.42,
-      delay: i * 0.035,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
 
 export default function Plugins() {
   return (
@@ -88,14 +75,12 @@ export default function Plugins() {
               {plugins.map((plugin, i) => {
                 const Icon = getIcon(plugin.icon);
                 return (
-                  <motion.div
+                  <Reveal
                     key={plugin.name}
                     className={`pl-row${plugin.enabled ? " pl-row--on" : ""}`}
-                    custom={i}
-                    variants={rowVariants}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-20px" }}
+                    delay={i * 0.035}
+                    x={-16}
+                    y={0}
                   >
                     <span className="pl-num">
                       {String(i + 1).padStart(2, "0")}
@@ -113,7 +98,7 @@ export default function Plugins() {
                     >
                       {plugin.enabled ? "On" : "Off"}
                     </span>
-                  </motion.div>
+                  </Reveal>
                 );
               })}
             </div>
