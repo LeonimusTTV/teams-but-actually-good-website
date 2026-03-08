@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
+import CustomCursor from "./CustomCursor";
+import ScrollProgress from "./ScrollProgress";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,6 +14,9 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="layout">
+      <CustomCursor />
+      <ScrollProgress />
+
       <header className="header">
         <div className="container">
           <nav className="nav">

@@ -1,8 +1,11 @@
+import { motion } from "framer-motion";
 import "./Plugins.css";
 import pluginsData from "../data/plugins.json";
 import { getIcon } from "../data/iconMap";
 import PageHero from "../components/PageHero";
 import InfoGrid from "../components/InfoGrid";
+import PageTransition from "../components/PageTransition";
+import Reveal from "../components/Reveal";
 
 const plugins = pluginsData;
 const enabledCount = plugins.filter((p) => p.enabled).length;
@@ -26,82 +29,106 @@ const infoCards = [
   },
 ];
 
+const rowVariants = {
+  hidden: { opacity: 0, x: -16 },
+  show: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.42,
+      delay: i * 0.035,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  }),
+};
+
 export default function Plugins() {
   return (
-    <div className="plugins-page">
-      <PageHero
-        label="Plugins"
-        title={
-          <>
-            {plugins.length} things
-            <br />
-            <em>we fixed.</em>
-          </>
-        }
-        subtitle="All pre-installed. Toggle each one from the settings panel. No restarts."
-        glowSide="left"
-      >
-        <div className="pl-meta">
-          <span className="pl-meta-item">
-            <span className="pl-meta-dot pl-meta-dot--on" />
-            {enabledCount} on by default
-          </span>
-          <span className="pl-meta-sep" />
-          <span className="pl-meta-item">
-            <span className="pl-meta-dot" />
-            {optionalCount} optional
-          </span>
-          <span className="pl-meta-sep" />
-          <span className="pl-meta-item">0 accounts needed</span>
-        </div>
-      </PageHero>
-
-      {/* Plugin list */}
-      <section className="pl-list-section">
-        <div className="container">
-          <div className="pl-list">
-            <div className="pl-list-header">
-              <span className="plh-num">#</span>
-              <span className="plh-name">Plugin</span>
-              <span className="plh-cat">Category</span>
-              <span className="plh-status">Default</span>
-            </div>
-            {plugins.map((plugin, i) => {
-              const Icon = getIcon(plugin.icon);
-              return (
-                <div
-                  key={plugin.name}
-                  className={`pl-row${plugin.enabled ? " pl-row--on" : ""}`}
-                >
-                  <span className="pl-num">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="pl-info">
-                    <div className="pl-name-row">
-                      <Icon className="pl-icon" strokeWidth={1.5} />
-                      <span className="pl-name">{plugin.name}</span>
-                    </div>
-                    <p className="pl-desc">{plugin.description}</p>
-                  </div>
-                  <span className="pl-cat">{plugin.category}</span>
-                  <span
-                    className={`pl-toggle${plugin.enabled ? " pl-toggle--on" : ""}`}
-                  >
-                    {plugin.enabled ? "On" : "Off"}
-                  </span>
-                </div>
-              );
-            })}
+    <PageTransition>
+      <div className="plugins-page">
+        <PageHero
+          label="Plugins"
+          title={
+            <>
+              {plugins.length} things
+              <br />
+              <em>we fixed.</em>
+            </>
+          }
+          subtitle="All pre-installed. Toggle each one from the settings panel. No restarts."
+          glowSide="left"
+        >
+          <div className="pl-meta">
+            <span className="pl-meta-item">
+              <span className="pl-meta-dot pl-meta-dot--on" />
+              {enabledCount} on by default
+            </span>
+            <span className="pl-meta-sep" />
+            <span className="pl-meta-item">
+              <span className="pl-meta-dot" />
+              {optionalCount} optional
+            </span>
+            <span className="pl-meta-sep" />
+            <span className="pl-meta-item">0 accounts needed</span>
           </div>
-        </div>
-      </section>
+        </PageHero>
 
-      {/* Info grid */}
-      <section className="info-section">
-        <div className="container">
-          <InfoGrid cards={infoCards} cols={3} />
-        </div>
-      </section>
-    </div>
+        {/* Plugin list */}
+        <section className="pl-list-section">
+          <div className="container">
+            <div className="pl-list">
+              <Reveal>
+                <div className="pl-list-header">
+                  <span className="plh-num">#</span>
+                  <span className="plh-name">Plugin</span>
+                  <span className="plh-cat">Category</span>
+                  <span className="plh-status">Default</span>
+                </div>
+              </Reveal>
+              {plugins.map((plugin, i) => {
+                const Icon = getIcon(plugin.icon);
+                return (
+                  <motion.div
+                    key={plugin.name}
+                    className={`pl-row${plugin.enabled ? " pl-row--on" : ""}`}
+                    custom={i}
+                    variants={rowVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-20px" }}
+                  >
+                    <span className="pl-num">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="pl-info">
+                      <div className="pl-name-row">
+                        <Icon className="pl-icon" strokeWidth={1.5} />
+                        <span className="pl-name">{plugin.name}</span>
+                      </div>
+                      <p className="pl-desc">{plugin.description}</p>
+                    </div>
+                    <span className="pl-cat">{plugin.category}</span>
+                    <span
+                      className={`pl-toggle${plugin.enabled ? " pl-toggle--on" : ""}`}
+                    >
+                      {plugin.enabled ? "On" : "Off"}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Info grid */}
+        <section className="info-section">
+          <div className="container">
+            <Reveal delay={0.1}>
+              <InfoGrid cards={infoCards} cols={3} />
+            </Reveal>
+          </div>
+        </section>
+      </div>
+    </PageTransition>
   );
 }

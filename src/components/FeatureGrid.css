@@ -25,7 +25,7 @@
   color: var(--color-text);
 }
 
-/* ── Bordered grid — the whole grid has one outer border ── */
+/* ── Bordered grid ── */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,26 +34,51 @@
   overflow: hidden;
 }
 
-/* Each cell has right + bottom internal dividers */
-.feature-card {
-  padding: 2rem 1.875rem;
+/* The motion.div wrapper */
+.features-grid > div {
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  transition: background 0.15s ease;
+}
+
+.features-grid > div:nth-child(3n) {
+  border-right: none;
+}
+
+.features-grid > div:nth-child(n+4) {
+  border-bottom: none;
+}
+
+/* Each card */
+.feature-card {
+  padding: 2rem 1.875rem;
+  transition: background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  height: 100%;
 }
 
 .feature-card:hover {
   background: var(--color-bg-secondary);
 }
 
-/* Remove right border on last column */
-.feature-card:nth-child(3n) {
-  border-right: none;
+/* Inner shine that follows cursor */
+.feature-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgba(34, 211, 238, 0.07) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Remove bottom border on last row */
-.feature-card:nth-child(n+4) {
-  border-bottom: none;
+.feature-card:hover .feature-shine {
+  opacity: 1;
 }
 
 /* ── Card internals ── */
@@ -62,6 +87,8 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .feature-num {
@@ -77,6 +104,12 @@
   height: 1.375rem;
   color: var(--color-accent);
   opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover .feature-icon {
+  opacity: 1;
+  transform: scale(1.15);
 }
 
 .feature-card h3 {
@@ -85,12 +118,16 @@
   color: var(--color-text);
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
 }
 
 .feature-card p {
   font-size: 0.875rem;
   line-height: 1.65;
   color: var(--color-text-secondary);
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Responsive ── */
@@ -99,20 +136,19 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Re-wire borders for 2-col */
-  .feature-card:nth-child(3n) {
+  .features-grid > div:nth-child(3n) {
     border-right: 1px solid var(--color-border);
   }
 
-  .feature-card:nth-child(2n) {
+  .features-grid > div:nth-child(2n) {
     border-right: none;
   }
 
-  .feature-card:nth-child(n+4) {
+  .features-grid > div:nth-child(n+4) {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .feature-card:nth-child(n+5) {
+  .features-grid > div:nth-child(n+5) {
     border-bottom: none;
   }
 }
@@ -122,12 +158,12 @@
     grid-template-columns: 1fr;
   }
 
-  .feature-card {
+  .features-grid > div {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
   }
 
-  .feature-card:last-child {
+  .features-grid > div:last-child {
     border-bottom: none;
   }
 }
