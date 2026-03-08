@@ -3,19 +3,20 @@ import "./CustomCursor.css";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const reticleRef = useRef<HTMLDivElement>(null);
+  const coordsRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Only show on pointer devices
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    let mouseX = -100,
-      mouseY = -100;
-    let ringX = -100,
-      ringY = -100;
+    let mouseX = -200,
+      mouseY = -200;
+    let reticleX = -200,
+      reticleY = -200;
     let rafId: number;
     let isHovering = false;
+    let isVisible = false;
 
     const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
 
@@ -25,9 +26,9 @@ export default function CustomCursor() {
     };
 
     const animate = () => {
-      ringX = lerp(ringX, mouseX, 0.1);
-      ringY = lerp(ringY, mouseY, 0.1);
-      setPos(ringRef.current, ringX, ringY);
+      reticleX = lerp(reticleX, mouseX, 0.09);
+      reticleY = lerp(reticleY, mouseY, 0.09);
+      setPos(reticleRef.current, reticleX, reticleY);
       rafId = requestAnimationFrame(animate);
     };
 
@@ -35,31 +36,51 @@ export default function CustomCursor() {
       mouseX = e.clientX;
       mouseY = e.clientY;
       setPos(dotRef.current, mouseX, mouseY);
-      if (!visible) setVisible(true);
+
+      if (coordsRef.current) {
+        const cx = String(e.clientX).padStart(4, "0");
+        const cy = String(e.clientY).padStart(4, "0");
+        coordsRef.current.style.transform = `translate(${mouseX + 12}px, ${mouseY + 8}px)`;
+        coordsRef.current.textContent = `${cx}·${cy}`;
+      }
+
+      if (!isVisible) {
+        isVisible = true;
+        setVisible(true);
+      }
     };
 
-    const onMouseEnter = () => setVisible(true);
-    const onMouseLeave = () => setVisible(false);
+    const onMouseEnter = () => {
+      isVisible = true;
+      setVisible(true);
+    };
+    const onMouseLeave = () => {
+      isVisible = false;
+      setVisible(false);
+    };
+
+    const getSpinner = () =>
+      reticleRef.current?.querySelector<HTMLDivElement>(".cursor-reticle-spin") ?? null;
 
     const onHoverIn = () => {
       isHovering = true;
-      ringRef.current?.classList.add("cursor-ring--hover");
+      getSpinner()?.classList.add("cursor-reticle--hover");
       dotRef.current?.classList.add("cursor-dot--hover");
     };
 
     const onHoverOut = () => {
       isHovering = false;
-      ringRef.current?.classList.remove("cursor-ring--hover");
+      getSpinner()?.classList.remove("cursor-reticle--hover");
       dotRef.current?.classList.remove("cursor-dot--hover");
     };
 
     const onClickIn = () => {
-      ringRef.current?.classList.add("cursor-ring--click");
+      getSpinner()?.classList.add("cursor-reticle--click");
       dotRef.current?.classList.add("cursor-dot--click");
     };
 
     const onClickOut = () => {
-      ringRef.current?.classList.remove("cursor-ring--click");
+      getSpinner()?.classList.remove("cursor-reticle--click");
       dotRef.current?.classList.remove("cursor-dot--click");
     };
 
@@ -71,19 +92,30 @@ export default function CustomCursor() {
 
     rafId = requestAnimationFrame(animate);
 
-    // Delegated event listeners for interactive elements
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as Element;
-      if (target.closest("a, button, [role='button'], input, textarea, select, [data-magnetic]")) {
+      if (
+        target.closest(
+          "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+        )
+      ) {
         onHoverIn();
       }
     };
     const handleMouseOut = (e: MouseEvent) => {
       const target = e.target as Element;
-      if (target.closest("a, button, [role='button'], input, textarea, select, [data-magnetic]")) {
+      if (
+        target.closest(
+          "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+        )
+      ) {
         if (!isHovering) return;
         const related = e.relatedTarget as Element | null;
-        if (!related?.closest("a, button, [role='button'], input, textarea, select, [data-magnetic]")) {
+        if (
+          !related?.closest(
+            "a, button, [role='button'], input, textarea, select, [data-magnetic]"
+          )
+        ) {
           onHoverOut();
         }
       }
@@ -106,14 +138,32 @@ export default function CustomCursor() {
 
   return (
     <>
+      {/* Precise cursor point */}
       <div
         ref={dotRef}
         className={`cursor-dot ${visible ? "cursor-dot--visible" : ""}`}
       />
+
+      {/* Lagging corner-bracket reticle — outer div for JS positioning, inner for CSS spin */}
       <div
-        ref={ringRef}
-        className={`cursor-ring ${visible ? "cursor-ring--visible" : ""}`}
-      />
+        ref={reticleRef}
+        className={`cursor-reticle-pos ${visible ? "cursor-reticle--visible" : ""}`}
+      >
+        <div className="cursor-reticle-spin">
+          <div className="cursor-corner cursor-corner--tl" />
+          <div className="cursor-corner cursor-corner--tr" />
+          <div className="cursor-corner cursor-corner--bl" />
+          <div className="cursor-corner cursor-corner--br" />
+        </div>
+      </div>
+
+      {/* Live coordinate readout */}
+      <div
+        ref={coordsRef}
+        className={`cursor-coords ${visible ? "cursor-coords--visible" : ""}`}
+      >
+        0000·0000
+      </div>
     </>
   );
 }

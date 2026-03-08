@@ -1,5 +1,4 @@
 /* ─── Custom Cursor ─── */
-/* Hide system cursor on pointer devices */
 @media (pointer: fine) {
   *,
   *::before,
@@ -8,19 +7,28 @@
   }
 }
 
+/* ── Dot: precise cursor point ── */
 .cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   background: var(--color-accent);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
   opacity: 0;
-  transition: opacity 0.3s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  transition:
+    opacity 0.3s ease,
+    width 0.15s ease,
+    height 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
   will-change: transform;
+  box-shadow:
+    0 0 6px var(--color-accent),
+    0 0 14px rgba(34, 211, 238, 0.35);
 }
 
 .cursor-dot--visible {
@@ -28,51 +36,142 @@
 }
 
 .cursor-dot--hover {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-}
-
-.cursor-dot--click {
   width: 4px;
   height: 4px;
   background: #fff;
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-.cursor-ring {
+.cursor-dot--click {
+  width: 3px;
+  height: 3px;
+  background: var(--color-accent);
+  box-shadow:
+    0 0 12px var(--color-accent),
+    0 0 24px rgba(34, 211, 238, 0.6);
+}
+
+/* ── Reticle: outer wrapper handles JS positioning, inner div spins ── */
+.cursor-reticle-pos {
   position: fixed;
   top: 0;
   left: 0;
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid rgba(34, 211, 238, 0.55);
-  border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
   opacity: 0;
-  transition:
-    opacity 0.3s ease,
-    width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.2s ease,
-    background 0.2s ease;
+  transition: opacity 0.3s ease;
   will-change: transform;
 }
 
-.cursor-ring--visible {
+.cursor-reticle--visible {
   opacity: 1;
 }
 
-.cursor-ring--hover {
-  width: 58px;
-  height: 58px;
-  border-color: rgba(34, 211, 238, 0.9);
-  background: rgba(34, 211, 238, 0.04);
+.cursor-reticle-spin {
+  width: 38px;
+  height: 38px;
+  animation: reticle-rotate 9s linear infinite;
+  transform-origin: 50% 50%;
+  transition:
+    width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    animation-duration 0.3s ease;
 }
 
-.cursor-ring--click {
-  width: 30px;
-  height: 30px;
+@keyframes reticle-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Corner bracket pieces */
+.cursor-corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(34, 211, 238, 0.65);
+  border-style: solid;
+  transition:
+    width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cursor-corner--tl {
+  top: 0;
+  left: 0;
+  border-width: 1.5px 0 0 1.5px;
+}
+.cursor-corner--tr {
+  top: 0;
+  right: 0;
+  border-width: 1.5px 1.5px 0 0;
+}
+.cursor-corner--bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1.5px 1.5px;
+}
+.cursor-corner--br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* ── Hover: lock-on state ── */
+.cursor-reticle-spin.cursor-reticle--hover {
+  width: 54px;
+  height: 54px;
+  animation-duration: 2.5s;
+}
+
+.cursor-reticle-spin.cursor-reticle--hover .cursor-corner {
+  width: 11px;
+  height: 11px;
   border-color: rgba(34, 211, 238, 1);
-  background: rgba(34, 211, 238, 0.08);
+  box-shadow:
+    0 0 4px rgba(34, 211, 238, 0.6),
+    0 0 10px rgba(34, 211, 238, 0.2);
+}
+
+/* ── Click: snap inward ── */
+.cursor-reticle-spin.cursor-reticle--click {
+  width: 24px;
+  height: 24px;
+  animation-duration: 0.35s;
+}
+
+.cursor-reticle-spin.cursor-reticle--click .cursor-corner {
+  border-color: rgba(34, 211, 238, 1);
+  box-shadow:
+    0 0 6px rgba(34, 211, 238, 0.8),
+    0 0 16px rgba(34, 211, 238, 0.4);
+}
+
+/* ── Coordinate readout ── */
+.cursor-coords {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: "Geist Mono", "SF Mono", "Courier New", monospace;
+  font-size: 7.5px;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  color: rgba(34, 211, 238, 0.45);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 99997;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.cursor-coords--visible {
+  opacity: 1;
 }
