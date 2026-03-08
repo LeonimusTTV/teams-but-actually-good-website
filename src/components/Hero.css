@@ -145,54 +145,6 @@
   flex-wrap: wrap;
 }
 
-/* ─── Buttons ─── */
-.btn {
-  padding: 0.75rem 1.625rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9375rem;
-  font-family: var(--font-ui);
-  text-decoration: none;
-  transition: all 0.15s ease;
-  display: inline-block;
-  border: 1px solid transparent;
-  cursor: pointer;
-  line-height: 1.5;
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: #060910;
-  font-weight: 600;
-}
-
-.btn-primary:hover {
-  background: #38e8ff;
-  color: #060910;
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--color-text-secondary);
-  border-color: transparent;
-  padding-left: 0;
-}
-
-.btn-ghost:hover {
-  color: var(--color-text);
-}
-
-.btn-secondary {
-  background: transparent;
-  border-color: var(--color-border-hover);
-  color: var(--color-text-secondary);
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-text);
-}
-
 /* ─── Right column: CSS Teams Mockup ─── */
 .hero-visual {
   position: relative;

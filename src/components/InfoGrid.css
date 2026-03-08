@@ -1,0 +1,78 @@
+/* ─── Shared bordered info-card grid ─── */
+.info-grid {
+  display: grid;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.info-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.info-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.info-card {
+  padding: 2rem 1.875rem;
+  border-right: 1px solid var(--color-border);
+  transition: background 0.15s ease;
+}
+
+.info-card:last-child {
+  border-right: none;
+}
+
+.info-card:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.info-card-num {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.info-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.info-card p {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── Wrapper section shared by pages ── */
+.info-section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .info-grid--3col,
+  .info-grid--2col {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .info-card:last-child {
+    border-bottom: none;
+  }
+}

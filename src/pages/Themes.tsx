@@ -1,8 +1,23 @@
 import "./Themes.css";
 import themesData from "../data/themes.json";
 import type { Theme } from "../data/types";
+import PageHero from "../components/PageHero";
+import InfoGrid from "../components/InfoGrid";
 
 const themes: Theme[] = themesData;
+
+const infoCards = [
+  {
+    num: "01",
+    title: "Switching themes",
+    body: "Open settings, pick a theme, done. Your choice is saved and applied every time Teams starts.",
+  },
+  {
+    num: "02",
+    title: "Custom themes",
+    body: "A theme editor is in the works. You'll be able to build and share your own. Not done yet — but it's coming.",
+  },
+];
 
 interface MiniMockupProps {
   colors: Theme["colors"];
@@ -152,32 +167,28 @@ function MiniMockup({ colors }: MiniMockupProps) {
 export default function Themes() {
   return (
     <div className="themes-page">
-      {/* Hero */}
-      <section className="th-hero">
-        <div className="th-hero-glow" />
-        <div className="container">
-          <span className="th-label">Themes</span>
-          <h1 className="th-title">
+      <PageHero
+        label="Themes"
+        title={
+          <>
             {themes.length} ways to make
             <br />
             <em>Teams less ugly.</em>
-          </h1>
-          <p className="th-sub">
-            Switch instantly from the settings panel. No restart. Your choice is
-            saved and applied every time Teams starts.
-          </p>
-          <div className="th-swatches">
-            {themes.map((t) => (
-              <span
-                key={t.name}
-                className="th-swatch"
-                style={{ background: t.colors.primary }}
-                title={t.name}
-              />
-            ))}
-          </div>
+          </>
+        }
+        subtitle="Switch instantly from the settings panel. No restart. Your choice is saved and applied every time Teams starts."
+      >
+        <div className="th-swatches">
+          {themes.map((t) => (
+            <span
+              key={t.name}
+              className="th-swatch"
+              style={{ background: t.colors.primary }}
+              title={t.name}
+            />
+          ))}
         </div>
-      </section>
+      </PageHero>
 
       {/* Theme grid */}
       <section className="th-grid-section">
@@ -202,26 +213,9 @@ export default function Themes() {
       </section>
 
       {/* Info */}
-      <section className="th-info-section">
+      <section className="info-section">
         <div className="container">
-          <div className="th-info-grid">
-            <div className="th-info-card">
-              <span className="th-info-num">01</span>
-              <h3>Switching themes</h3>
-              <p>
-                Open settings, pick a theme, done. Your choice is saved and
-                applied every time Teams starts.
-              </p>
-            </div>
-            <div className="th-info-card">
-              <span className="th-info-num">02</span>
-              <h3>Custom themes</h3>
-              <p>
-                A theme editor is in the works. You'll be able to build and
-                share your own. Not done yet — but it's coming.
-              </p>
-            </div>
-          </div>
+          <InfoGrid cards={infoCards} cols={2} />
         </div>
       </section>
     </div>

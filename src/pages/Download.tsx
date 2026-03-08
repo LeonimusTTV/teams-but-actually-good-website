@@ -3,6 +3,7 @@ import "./Download.css";
 import platformsData from "../data/platforms.json";
 import pluginsData from "../data/plugins.json";
 import { getIcon } from "../data/iconMap";
+import PageHero from "../components/PageHero";
 
 const platforms = platformsData;
 const pluginCount = pluginsData.length;
@@ -10,23 +11,19 @@ const pluginCount = pluginsData.length;
 export default function Download() {
   return (
     <div className="download-page">
-      {/* Hero */}
-      <section className="dl-hero">
-        <div className="dl-hero-glow" />
-        <div className="container">
-          <span className="dl-label">Download</span>
-          <h1 className="dl-title">
+      <PageHero
+        label="Download"
+        title={
+          <>
             One file.
             <br />
             <em>Three platforms.</em>
             <br />
             Zero drama.
-          </h1>
-          <p className="dl-sub">
-            No account. No license key. It's just a file.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        subtitle="No account. No license key. It's just a file."
+      />
 
       {/* Platform rows */}
       <section className="dl-platforms">
@@ -61,7 +58,9 @@ export default function Download() {
       {/* Steps */}
       <section className="dl-steps">
         <div className="container">
-          <span className="dl-section-label">How it works</span>
+          <span className="section-label" style={{ marginBottom: "3rem" }}>
+            How it works
+          </span>
           <div className="steps-rail">
             <div className="step-node">
               <span className="step-n">01</span>
@@ -131,7 +130,9 @@ export default function Download() {
       {/* FAQ */}
       <section className="dl-faq">
         <div className="container">
-          <span className="dl-section-label">FAQ</span>
+          <span className="section-label" style={{ marginBottom: "3rem" }}>
+            FAQ
+          </span>
           <h2 className="faq-heading">Questions you might have</h2>
           <div className="faq-grid">
             <div className="faq-q">

@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import Download from "./pages/Download";
 import Plugins from "./pages/Plugins";
 import Themes from "./pages/Themes";
-import "./App.css";
-
 function App() {
   return (
     <Layout>

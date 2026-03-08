@@ -2,57 +2,7 @@
   min-height: 100vh;
 }
 
-/* ── Hero ── */
-.th-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 7rem 0 5rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.th-hero-glow {
-  position: absolute;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.06) 0%, transparent 65%);
-  top: -300px;
-  right: -150px;
-  pointer-events: none;
-}
-
-.th-label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-accent);
-  margin-bottom: 1.5rem;
-}
-
-.th-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
-  margin-bottom: 1.25rem;
-}
-
-.th-title em {
-  font-style: italic;
-  color: var(--color-accent);
-}
-
-.th-sub {
-  font-size: 1.0625rem;
-  color: var(--color-text-secondary);
-  max-width: 480px;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
+/* ── Color swatch row (hero extra) ── */
 .th-swatches {
   display: flex;
   gap: 0.625rem;
@@ -279,76 +229,9 @@
   margin: 0;
 }
 
-/* ── Info section ── */
-.th-info-section {
-  padding: 5rem 0;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg-secondary);
-}
-
-.th-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.th-info-card {
-  padding: 2rem 2.25rem;
-  border-right: 1px solid var(--color-border);
-  transition: background 0.15s ease;
-}
-
-.th-info-card:last-child {
-  border-right: none;
-}
-
-.th-info-card:hover {
-  background: var(--color-bg-tertiary);
-}
-
-.th-info-num {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--color-text-tertiary);
-  margin-bottom: 0.875rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.th-info-card h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.01em;
-}
-
-.th-info-card p {
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .themes-grid {
     grid-template-columns: 1fr;
-  }
-
-  .th-info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .th-info-card {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .th-info-card:last-child {
-    border-bottom: none;
   }
 }

@@ -1,43 +1,60 @@
 import "./Plugins.css";
 import pluginsData from "../data/plugins.json";
 import { getIcon } from "../data/iconMap";
+import PageHero from "../components/PageHero";
+import InfoGrid from "../components/InfoGrid";
 
 const plugins = pluginsData;
 const enabledCount = plugins.filter((p) => p.enabled).length;
 const optionalCount = plugins.filter((p) => !p.enabled).length;
 
+const infoCards = [
+  {
+    num: "01",
+    title: "Toggle from settings",
+    body: "Open the settings panel after installing. Enable or disable any plugin with one click. No restart. No drama.",
+  },
+  {
+    num: "02",
+    title: "Each plugin is independent",
+    body: "Nothing is coupled. Turn off what you don't want. The rest keeps working exactly as expected.",
+  },
+  {
+    num: "03",
+    title: "More coming",
+    body: "A plugin API is in the works. Write your own, share it with the community. Not ready yet — but it's coming.",
+  },
+];
+
 export default function Plugins() {
   return (
     <div className="plugins-page">
-      {/* Hero */}
-      <section className="pl-hero">
-        <div className="pl-hero-glow" />
-        <div className="container">
-          <span className="pl-label">Plugins</span>
-          <h1 className="pl-title">
+      <PageHero
+        label="Plugins"
+        title={
+          <>
             {plugins.length} things
             <br />
             <em>we fixed.</em>
-          </h1>
-          <p className="pl-sub">
-            All pre-installed. Toggle each one from the settings panel. No
-            restarts.
-          </p>
-          <div className="pl-meta">
-            <span className="pl-meta-item">
-              <span className="pl-meta-dot pl-meta-dot--on" />
-              {enabledCount} on by default
-            </span>
-            <span className="pl-meta-sep" />
-            <span className="pl-meta-item">
-              <span className="pl-meta-dot" />
-              {optionalCount} optional
-            </span>
-            <span className="pl-meta-sep" />
-            <span className="pl-meta-item">0 accounts needed</span>
-          </div>
+          </>
+        }
+        subtitle="All pre-installed. Toggle each one from the settings panel. No restarts."
+        glowSide="left"
+      >
+        <div className="pl-meta">
+          <span className="pl-meta-item">
+            <span className="pl-meta-dot pl-meta-dot--on" />
+            {enabledCount} on by default
+          </span>
+          <span className="pl-meta-sep" />
+          <span className="pl-meta-item">
+            <span className="pl-meta-dot" />
+            {optionalCount} optional
+          </span>
+          <span className="pl-meta-sep" />
+          <span className="pl-meta-item">0 accounts needed</span>
         </div>
-      </section>
+      </PageHero>
 
       {/* Plugin list */}
       <section className="pl-list-section">
@@ -80,34 +97,9 @@ export default function Plugins() {
       </section>
 
       {/* Info grid */}
-      <section className="pl-info-section">
+      <section className="info-section">
         <div className="container">
-          <div className="pl-info-grid">
-            <div className="pl-info-card">
-              <span className="pl-info-num">01</span>
-              <h3>Toggle from settings</h3>
-              <p>
-                Open the settings panel after installing. Enable or disable any
-                plugin with one click. No restart. No drama.
-              </p>
-            </div>
-            <div className="pl-info-card">
-              <span className="pl-info-num">02</span>
-              <h3>Each plugin is independent</h3>
-              <p>
-                Nothing is coupled. Turn off what you don't want. The rest keeps
-                working exactly as expected.
-              </p>
-            </div>
-            <div className="pl-info-card">
-              <span className="pl-info-num">03</span>
-              <h3>More coming</h3>
-              <p>
-                A plugin API is in the works. Write your own, share it with the
-                community. Not ready yet — but it's coming.
-              </p>
-            </div>
-          </div>
+          <InfoGrid cards={infoCards} cols={3} />
         </div>
       </section>
     </div>
