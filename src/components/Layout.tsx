@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 import ScrollProgress from "./ScrollProgress";
+import { preloadRoute } from "../routes/routeModules";
 
 const CustomCursor = lazy(() => import("./CustomCursor"));
 
@@ -45,18 +46,24 @@ export default function Layout({ children }: LayoutProps) {
               <Link
                 to="/download"
                 className={isActive("/download") ? "active" : ""}
+                onMouseEnter={() => preloadRoute("/download")}
+                onFocus={() => preloadRoute("/download")}
               >
                 Download
               </Link>
               <Link
                 to="/plugins"
                 className={isActive("/plugins") ? "active" : ""}
+                onMouseEnter={() => preloadRoute("/plugins")}
+                onFocus={() => preloadRoute("/plugins")}
               >
                 Plugins
               </Link>
               <Link
                 to="/themes"
                 className={isActive("/themes") ? "active" : ""}
+                onMouseEnter={() => preloadRoute("/themes")}
+                onFocus={() => preloadRoute("/themes")}
               >
                 Themes
               </Link>
