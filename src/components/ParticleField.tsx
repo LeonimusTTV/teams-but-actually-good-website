@@ -34,7 +34,7 @@ export default function ParticleField() {
       height = canvas.offsetHeight;
       canvas.width = width * devicePixelRatio;
       canvas.height = height * devicePixelRatio;
-      ctx.scale(devicePixelRatio, devicePixelRatio);
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
     };
 
     resize();

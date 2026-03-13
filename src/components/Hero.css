@@ -126,6 +126,10 @@
   animation: badge-pulse 2.5s ease-out infinite;
 }
 
+.badge-dot--static {
+  animation: none;
+}
+
 /* ─── Hero title with glitch ─── */
 .hero-title {
   font-family: var(--font-display);
@@ -380,6 +384,11 @@
   animation-play-state: paused;
 }
 
+.mockup--static,
+.mockup--static:hover {
+  animation: none;
+}
+
 /* Scan line sweeping down */
 @keyframes scan-sweep {
   0% {
@@ -437,6 +446,10 @@
   filter: blur(24px);
   pointer-events: none;
   animation: float 7s ease-in-out infinite;
+}
+
+.mockup-glow--static {
+  animation: none;
 }
 
 /* ── Titlebar ── */
@@ -719,5 +732,22 @@
 
   .btn-ghost {
     padding-left: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce),
+(max-width: 767px) {
+
+  .hero-aurora,
+  .hero-title-line1,
+  .hero-title-line1::before,
+  .hero-title-line1::after,
+  .mockup,
+  .mockup-glow,
+  .mockup-scan,
+  .mod-badge,
+  .chat-msg,
+  .badge-dot {
+    animation: none !important;
   }
 }

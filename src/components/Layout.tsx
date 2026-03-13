@@ -1,7 +1,9 @@
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
-import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
+
+const CustomCursor = lazy(() => import("./CustomCursor"));
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,12 +11,25 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
+  const [showCustomCursor, setShowCustomCursor] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
+  useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
+
+    setShowCustomCursor(true);
+  }, []);
+
   return (
     <div className="layout">
-      <CustomCursor />
+      {showCustomCursor ? (
+        <Suspense fallback={null}>
+          <CustomCursor />
+        </Suspense>
+      ) : null}
       <ScrollProgress />
 
       <header className="header">
@@ -64,11 +79,11 @@ export default function Layout({ children }: LayoutProps) {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h4>Teams but (actually) good</h4>
+              <h3>Teams but (actually) good</h3>
               <p>Teams, but without the suffering.</p>
             </div>
             <div className="footer-section">
-              <h4>Links</h4>
+              <h3>Links</h3>
               <div className="footer-links">
                 <Link to="/download">Download</Link>
                 <Link to="/plugins">Plugins</Link>
@@ -83,7 +98,7 @@ export default function Layout({ children }: LayoutProps) {
               </div>
             </div>
             <div className="footer-section">
-              <h4>Community</h4>
+              <h3>Community</h3>
               <div className="footer-links">
                 <a
                   href="https://discord.com"

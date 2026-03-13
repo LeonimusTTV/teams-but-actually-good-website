@@ -20,15 +20,15 @@
 
   /* Text */
   --color-text: #e4eef8;
-  --color-text-secondary: #6a8fa8;
-  --color-text-tertiary: #3f5a72;
+  --color-text-secondary: #8fadc1;
+  --color-text-tertiary: #6f8ba1;
 
   /* Border */
   --color-border: #1a2d42;
   --color-border-hover: #2a4560;
 
   /* Fonts */
-  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-ui: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Typography */
@@ -255,6 +255,10 @@ body::before {
   animation: grain-shift 10s steps(8) infinite;
 }
 
+.route-loading {
+  min-height: 40vh;
+}
+
 /* ─── Button hover glow ─── */
 .btn-primary {
   position: relative;
@@ -306,4 +310,21 @@ body::before {
 /* ─── Smooth scrolling ─── */
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  body::before {
+    animation: none;
+    opacity: 0.02;
+  }
 }

@@ -19,9 +19,28 @@ export default function Download() {
   const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(META_URL)
-      .then((response) => response.json())
-      .then((data) => setVersion(data.version));
+    const controller = new AbortController();
+
+    fetch(META_URL, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch latest version: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then((data: { version?: string }) => {
+        if (data.version) {
+          setVersion(data.version);
+        }
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+      });
+
+    return () => controller.abort();
   }, []);
 
   return (

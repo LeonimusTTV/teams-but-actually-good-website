@@ -1,34 +1,45 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import "./Hero.css";
 import pluginsData from "../data/plugins.json";
 import themesData from "../data/themes.json";
-import ParticleField from "./ParticleField";
 import { useTextScramble } from "../hooks/useTextScramble";
 import { useCountUp } from "../hooks/useCountUp";
 
-function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
+const ParticleField = lazy(() => import("./ParticleField"));
+
+function ScrambleText({
+  text,
+  delay = 0,
+  disabled = false,
+}: {
+  text: string;
+  delay?: number;
+  disabled?: boolean;
+}) {
   const { text: out } = useTextScramble(text, delay, 1000);
-  return <>{out}</>;
+  return <>{disabled ? text : out}</>;
 }
 
 function CountStat({
   value,
   label,
   delay = 0,
+  disabled = false,
 }: {
   value: number | string;
   label: string;
   delay?: number;
+  disabled?: boolean;
 }) {
   const isNum = typeof value === "number";
   const { value: count, ref } = useCountUp(isNum ? value : 0, 1400, delay);
 
   return (
     <div className="stat">
-      <span className="stat-num" ref={isNum ? ref : undefined}>
-        {isNum ? count : value}
+      <span className="stat-num" ref={isNum && !disabled ? ref : undefined}>
+        {isNum ? (disabled ? value : count) : value}
       </span>
       <span className="stat-label">{label}</span>
     </div>
@@ -39,12 +50,22 @@ function MagneticLink({
   to,
   className,
   children,
+  disabled = false,
 }: {
   to: string;
   className: string;
   children: React.ReactNode;
+  disabled?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+
+  if (disabled) {
+    return (
+      <Link to={to} className={className}>
+        {children}
+      </Link>
+    );
+  }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -91,27 +112,75 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 22 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.55, ease: E },
   },
 };
 
 export default function Hero() {
+  const [reducedEffects, setReducedEffects] = useState(true);
+  const [showParticleField, setShowParticleField] = useState(false);
   const pluginCount = pluginsData.length;
   const themeCount = themesData.length;
   const themeStatValue: number | string = themeCount > 0 ? themeCount : "soon";
 
+  useEffect(() => {
+    const browserWindow = window as Window & {
+      requestIdleCallback?: (
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions,
+      ) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    const shouldReduceEffects =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 767px)").matches;
+
+    setReducedEffects(shouldReduceEffects);
+
+    if (shouldReduceEffects) {
+      return;
+    }
+
+    let timeoutId: number | undefined;
+    let idleId: number | undefined;
+
+    const enableParticleField = () => setShowParticleField(true);
+
+    if (browserWindow.requestIdleCallback) {
+      idleId = browserWindow.requestIdleCallback(enableParticleField, {
+        timeout: 1200,
+      });
+    } else {
+      timeoutId = window.setTimeout(enableParticleField, 400);
+    }
+
+    return () => {
+      if (idleId !== undefined && browserWindow.cancelIdleCallback) {
+        browserWindow.cancelIdleCallback(idleId);
+      }
+
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
   return (
-    <section className="hero">
+    <section className={`hero${reducedEffects ? " hero--reduced" : ""}`}>
       {/* Animated background */}
       <div className="hero-bg" aria-hidden="true">
-        <ParticleField />
+        {showParticleField ? (
+          <Suspense fallback={null}>
+            <ParticleField />
+          </Suspense>
+        ) : null}
         <div className="hero-glow" />
-        <div className="hero-aurora" />
+        {!reducedEffects ? <div className="hero-aurora" /> : null}
       </div>
 
       <div className="container">
@@ -130,7 +199,9 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="hero-badge"
               >
-                <span className="badge-dot" />
+                <span
+                  className={`badge-dot${reducedEffects ? " badge-dot--static" : ""}`}
+                />
                 Open source · GPL-3.0 license
               </a>
             </motion.div>
@@ -140,12 +211,23 @@ export default function Hero() {
               aria-label="Teams is bad. We fixed it."
               variants={item}
             >
-              <span className="hero-title-line1" data-text="Teams is bad.">
-                <ScrambleText text="Teams is bad." delay={200} />
+              <span
+                className={reducedEffects ? undefined : "hero-title-line1"}
+                data-text={reducedEffects ? undefined : "Teams is bad."}
+              >
+                <ScrambleText
+                  text="Teams is bad."
+                  delay={200}
+                  disabled={reducedEffects}
+                />
               </span>
               <br />
               <em>
-                <ScrambleText text="We fixed it." delay={750} />
+                <ScrambleText
+                  text="We fixed it."
+                  delay={750}
+                  disabled={reducedEffects}
+                />
               </em>
             </motion.h1>
 
@@ -155,20 +237,47 @@ export default function Hero() {
             </motion.p>
 
             <motion.div className="hero-stats" variants={item}>
-              <CountStat value={pluginCount} label="plugins" delay={300} />
+              <CountStat
+                value={pluginCount}
+                label="plugins"
+                delay={300}
+                disabled={reducedEffects}
+              />
               <div className="stat-sep" />
-              <CountStat value={themeStatValue} label="themes" delay={500} />
+              <CountStat
+                value={themeStatValue}
+                label="themes"
+                delay={500}
+                disabled={reducedEffects}
+              />
               <div className="stat-sep" />
-              <CountStat value={0} label="telemetry" delay={700} />
+              <CountStat
+                value={0}
+                label="telemetry"
+                delay={700}
+                disabled={reducedEffects}
+              />
               <div className="stat-sep" />
-              <CountStat value={"free"} label="always" />
+              <CountStat
+                value={"free"}
+                label="always"
+                disabled={reducedEffects}
+              />
             </motion.div>
 
             <motion.div className="hero-actions" variants={item}>
-              <MagneticLink to="/download" className="btn btn-primary">
+              <MagneticLink
+                to="/download"
+                className="btn btn-primary"
+                disabled={reducedEffects}
+              >
                 Download, it's free
               </MagneticLink>
-              <MagneticLink to="/plugins" className="btn btn-ghost">
+              <MagneticLink
+                to="/plugins"
+                className="btn btn-ghost"
+                disabled={reducedEffects}
+              >
                 See what's included →
               </MagneticLink>
             </motion.div>
@@ -178,12 +287,12 @@ export default function Hero() {
           <motion.div
             className="hero-visual"
             aria-hidden="true"
-            initial={{ opacity: 0, x: 40, filter: "blur(12px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="mockup">
-              <div className="mockup-scan" />
+            <div className={`mockup${reducedEffects ? " mockup--static" : ""}`}>
+              {!reducedEffects ? <div className="mockup-scan" /> : null}
               <div className="mockup-bar">
                 <div className="mockup-dots">
                   <span className="mdot red" />
@@ -277,7 +386,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="mockup-glow" />
+            <div
+              className={`mockup-glow${reducedEffects ? " mockup-glow--static" : ""}`}
+            />
           </motion.div>
         </div>
       </div>
