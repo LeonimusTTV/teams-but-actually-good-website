@@ -125,7 +125,7 @@ export default function Hero() {
           >
             <motion.div variants={item}>
               <a
-                href="https://github.com/LeonimusTTV/teams-but-actually-good?tab=GPL-3.0-1-ov-file"
+                href="https://github.com/LeonimusTTV/teams-but-actually-good/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-badge"
