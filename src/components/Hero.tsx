@@ -103,6 +103,7 @@ const item: Variants = {
 export default function Hero() {
   const pluginCount = pluginsData.length;
   const themeCount = themesData.length;
+  const themeStatValue: number | string = themeCount > 0 ? themeCount : "soon";
 
   return (
     <section className="hero">
@@ -156,7 +157,7 @@ export default function Hero() {
             <motion.div className="hero-stats" variants={item}>
               <CountStat value={pluginCount} label="plugins" delay={300} />
               <div className="stat-sep" />
-              <CountStat value={themeCount} label="themes" delay={500} />
+              <CountStat value={themeStatValue} label="themes" delay={500} />
               <div className="stat-sep" />
               <CountStat value={0} label="telemetry" delay={700} />
               <div className="stat-sep" />

@@ -210,47 +210,97 @@ function ThemeCard({ theme, index }: { theme: Theme; index: number }) {
 }
 
 export default function Themes() {
+  const hasThemes = themes.length > 0;
+
   return (
     <PageTransition>
       <div className="themes-page">
         <PageHero
           label="Themes"
           title={
-            <>
-              {themes.length} ways to make
-              <br />
-              <em>Teams less ugly.</em>
-            </>
+            hasThemes ? (
+              <>
+                {themes.length} ways to make
+                <br />
+                <em>Teams less ugly.</em>
+              </>
+            ) : (
+              <>
+                Theme support is
+                <br />
+                <em>ready, presets soon.</em>
+              </>
+            )
           }
-          subtitle="Switch instantly from the settings panel. No restart. Your choice is saved and applied every time Teams starts."
+          subtitle={
+            hasThemes
+              ? "Switch instantly from the settings panel. No restart. Your choice is saved and applied every time Teams starts."
+              : "Custom themes are already supported. We're just not shipping official built-in presets before the first release."
+          }
         >
-          <div className="th-swatches">
-            {themes.map((t, i) => (
-              <motion.span
-                key={t.name}
-                className="th-swatch"
-                style={{ background: t.colors.primary }}
-                title={t.name}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  delay: 0.35 + i * 0.04,
-                  duration: 0.3,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              />
-            ))}
-          </div>
+          {hasThemes ? (
+            <div className="th-swatches">
+              {themes.map((t, i) => (
+                <motion.span
+                  key={t.name}
+                  className="th-swatch"
+                  style={{ background: t.colors.primary }}
+                  title={t.name}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    delay: 0.35 + i * 0.04,
+                    duration: 0.3,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              className="th-coming-inline"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.35,
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <span className="th-coming-pill">official presets: soon</span>
+              <span className="th-coming-note">
+                theme system is already in place
+              </span>
+            </motion.div>
+          )}
         </PageHero>
 
         {/* Theme grid */}
         <section className="th-grid-section">
           <div className="container">
-            <div className="themes-grid">
-              {themes.map((theme, i) => (
-                <ThemeCard key={theme.name} theme={theme} index={i} />
-              ))}
-            </div>
+            {hasThemes ? (
+              <div className="themes-grid">
+                {themes.map((theme, i) => (
+                  <ThemeCard key={theme.name} theme={theme} index={i} />
+                ))}
+              </div>
+            ) : (
+              <Reveal delay={0.05}>
+                <div
+                  className="th-construction"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <div className="th-construction-tape">work in progress</div>
+                  <h3>No official theme pack yet.</h3>
+                  <p>
+                    Theme support is already implemented, including custom user
+                    themes. We're only skipping curated presets until after the
+                    first release.
+                  </p>
+                </div>
+              </Reveal>
+            )}
           </div>
         </section>
 

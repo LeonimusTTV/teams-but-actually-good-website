@@ -23,9 +23,109 @@
   box-shadow: 0 0 8px currentColor;
 }
 
+.th-coming-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.th-coming-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #f5f7ff;
+  border: 1px solid rgba(245, 247, 255, 0.25);
+  background: rgba(245, 247, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.38rem 0.7rem;
+}
+
+.th-coming-note {
+  font-size: 0.86rem;
+  color: var(--color-text-secondary);
+}
+
 /* ── Theme grid ── */
 .th-grid-section {
   padding: 5rem 0;
+}
+
+.th-construction {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2.8rem 1.75rem 1.75rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.th-construction::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(-45deg,
+      rgba(245, 158, 11, 0.07) 0,
+      rgba(245, 158, 11, 0.07) 14px,
+      transparent 14px,
+      transparent 28px);
+  pointer-events: none;
+}
+
+.th-construction-tape {
+  position: absolute;
+  top: 0.7rem;
+  left: 1rem;
+  transform: rotate(-1.5deg);
+  background: linear-gradient(90deg, #f59e0b, #facc15);
+  color: #131313;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+}
+
+.th-construction h3,
+.th-construction p,
+.th-construction-chips {
+  position: relative;
+  z-index: 1;
+}
+
+.th-construction h3 {
+  margin: 0 0 0.65rem;
+  color: var(--color-text);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  letter-spacing: -0.015em;
+}
+
+.th-construction p {
+  margin: 0;
+  max-width: 62ch;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.th-construction-chips {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.th-construction-chips span {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border: 1px dashed var(--color-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.62rem;
 }
 
 .themes-grid {
@@ -233,5 +333,9 @@
 @media (max-width: 768px) {
   .themes-grid {
     grid-template-columns: 1fr;
+  }
+
+  .th-construction {
+    padding-top: 2.5rem;
   }
 }
