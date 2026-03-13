@@ -46,7 +46,7 @@ export function getFeatures(): Feature[] {
       num: "06",
       title: "One Installer",
       description:
-        "Download, run, done. No admin rights. Uninstall any time — Teams goes back to normal.",
+        "Download, run, done. No admin rights. Uninstall any time, Teams goes back to normal.",
       icon: "Download",
     },
   ];

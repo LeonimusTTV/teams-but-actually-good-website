@@ -33,4 +33,5 @@ export interface Platform {
   requirement: string;
   label: string;
   extension: string;
+  url: string;
 }

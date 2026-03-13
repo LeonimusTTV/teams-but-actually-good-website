@@ -274,7 +274,7 @@
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  /* Hidden by default — only revealed by the glitch keyframes */
+  /* Hidden by default, only revealed by the glitch keyframes */
   clip-path: inset(0 0 100% 0);
 }
 

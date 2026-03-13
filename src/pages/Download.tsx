@@ -6,11 +6,24 @@ import { getIcon } from "../data/iconMap";
 import PageHero from "../components/PageHero";
 import PageTransition from "../components/PageTransition";
 import Reveal from "../components/Reveal";
+import { useEffect, useState } from "react";
+
+const META_URL =
+  "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/injection.meta.json";
 
 const platforms = platformsData;
 const pluginCount = pluginsData.length;
 
 export default function Download() {
+  // get latest version from meta url
+  const [version, setVersion] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(META_URL)
+      .then((response) => response.json())
+      .then((data) => setVersion(data.version));
+  }, []);
+
   return (
     <PageTransition>
       <div className="download-page">
@@ -53,7 +66,15 @@ export default function Download() {
                     </div>
                     <div className="platform-right">
                       <span className="platform-ext">{platform.extension}</span>
-                      <button className="btn btn-primary platform-btn">
+                      <button
+                        className="btn btn-primary platform-btn"
+                        onClick={() => {
+                          window.open(
+                            platform.url.replace("${version}", version || ""),
+                            "_blank",
+                          );
+                        }}
+                      >
                         {platform.label} <ArrowRight size={14} />
                       </button>
                     </div>
@@ -162,7 +183,7 @@ export default function Download() {
               {[
                 {
                   q: "Is it safe?",
-                  a: "Yes. It's open source — read every line. All modifications run locally and don't touch Teams' servers.",
+                  a: "Yes. It's open source, read every line. All modifications run locally and don't touch Teams' servers.",
                 },
                 {
                   q: "Will Microsoft ban me?",
@@ -174,7 +195,7 @@ export default function Download() {
                 },
                 {
                   q: "Can I uninstall it?",
-                  a: "Yes. Uninstall like any other app. Teams goes back to exactly how Microsoft intended — for better or worse.",
+                  a: "Yes. Uninstall like any other app. Teams goes back to exactly how Microsoft intended, for better or worse.",
                 },
               ].map((item, i) => (
                 <Reveal key={item.q} className="faq-q" delay={i * 0.09}>

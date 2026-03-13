@@ -18,7 +18,7 @@ const infoCards = [
   {
     num: "02",
     title: "Custom themes",
-    body: "A theme editor is in the works. You'll be able to build and share your own. Not done yet — but it's coming.",
+    body: "A theme editor is in the works. You'll be able to build and share your own. Not done yet, but it's coming.",
   },
 ];
 

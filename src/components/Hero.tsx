@@ -130,7 +130,7 @@ export default function Hero() {
                 className="hero-badge"
               >
                 <span className="badge-dot" />
-                Open source · MIT license
+                Open source · GPL-3.0 license
               </a>
             </motion.div>
 
@@ -165,7 +165,7 @@ export default function Hero() {
 
             <motion.div className="hero-actions" variants={item}>
               <MagneticLink to="/download" className="btn btn-primary">
-                Download — it's free
+                Download, it's free
               </MagneticLink>
               <MagneticLink to="/plugins" className="btn btn-ghost">
                 See what's included →

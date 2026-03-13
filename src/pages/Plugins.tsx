@@ -24,7 +24,7 @@ const infoCards = [
   {
     num: "03",
     title: "More coming",
-    body: "A plugin API is in the works. Write your own, share it with the community. Not ready yet — but it's coming.",
+    body: "A plugin API is in the works. Write your own, share it with the community. Not ready yet, but it's coming.",
   },
 ];
 

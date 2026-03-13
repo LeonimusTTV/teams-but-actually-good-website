@@ -17,6 +17,7 @@ import {
   Terminal,
   Chrome,
   Flame,
+  Compass,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -39,6 +40,7 @@ const iconMap: Record<string, LucideIcon> = {
   Terminal,
   Chrome,
   Flame,
+  Compass,
 };
 
 export function getIcon(iconName: string): LucideIcon {

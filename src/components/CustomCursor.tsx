@@ -146,7 +146,7 @@ export default function CustomCursor() {
         className={`cursor-dot ${visible ? "cursor-dot--visible" : ""}`}
       />
 
-      {/* Lagging corner-bracket reticle — outer div for JS positioning, inner for CSS spin */}
+      {/* Lagging corner-bracket reticle, outer div for JS positioning, inner for CSS spin */}
       <div
         ref={reticleRef}
         className={`cursor-reticle-pos ${visible ? "cursor-reticle--visible" : ""}`}

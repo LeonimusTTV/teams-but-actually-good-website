@@ -4,34 +4,47 @@
     "name": "Windows",
     "requirement": "Windows 10 / 11 · 64-bit",
     "label": "Download for Windows",
-    "extension": ".exe"
+    "extension": ".exe",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/teams-but-actually-good_${version}_x64_en-US.msi"
   },
   {
     "icon": "Apple",
     "name": "macOS",
     "requirement": "macOS 11 Big Sur or later",
     "label": "Download for macOS",
-    "extension": ".dmg"
+    "extension": ".dmg",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/teams-but-actually-good_${version}_aarch64.dmg"
   },
   {
     "icon": "Terminal",
     "name": "Linux",
     "requirement": "Most distributions · .deb and .rpm",
     "label": "Download for Linux",
-    "extension": ".tar.gz"
+    "extension": ".AppImage",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/teams-but-actually-good_${version}_amd64.AppImage"
   },
   {
     "icon": "Chrome",
     "name": "Chrome",
     "requirement": "Chrome / Chromium · v88+",
     "label": "Add to Chrome",
-    "extension": ".crx"
+    "extension": ".zip",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip"
   },
   {
     "icon": "Flame",
     "name": "Firefox",
     "requirement": "Firefox · v78 or later",
     "label": "Add to Firefox",
-    "extension": ".xpi"
+    "extension": ".zip",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-firefox.zip"
+  },
+  {
+    "icon": "Compass",
+    "name": "Safari",
+    "requirement": "Safari · v14 or later",
+    "label": "Add to Safari",
+    "extension": ".zip",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/safari-extension-macos.zip"
   }
 ]
