@@ -18,10 +18,18 @@ import {
   Chrome,
   Flame,
   Compass,
+  UserRoundCheck,
+  ImagePlay,
+  ChartBar,
+  HatGlasses,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
+  HatGlasses,
+  ChartBar,
+  ImagePlay,
+  UserRoundCheck,
   Bell,
   Zap,
   FileText,

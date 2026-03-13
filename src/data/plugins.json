@@ -1,65 +1,30 @@
 [
   {
-    "name": "Better Notifications",
-    "description": "Custom sounds, filtering, and priority settings. Fewer interruptions.",
-    "icon": "Bell",
-    "category": "Productivity",
-    "enabled": true
-  },
-  {
-    "name": "Quick Reactions",
-    "description": "Customizable reaction menu. React to messages without navigating three submenus.",
-    "icon": "Zap",
-    "category": "Communication",
-    "enabled": true
-  },
-  {
-    "name": "Message Formatting",
-    "description": "Markdown support and custom text styles. Teams' default editor is bad. This fixes it.",
-    "icon": "FileText",
-    "category": "Communication",
-    "enabled": true
-  },
-  {
-    "name": "Meeting Enhancer",
-    "description": "Auto-recording, better blur, custom layouts. Makes calls less painful.",
-    "icon": "Video",
-    "category": "Meetings",
-    "enabled": false
-  },
-  {
-    "name": "Performance Monitor",
-    "description": "See what Teams is doing to your CPU in real time. Useful. Slightly horrifying.",
-    "icon": "BarChart2",
-    "category": "Utility",
-    "enabled": false
-  },
-  {
-    "name": "Keyboard Shortcuts",
-    "description": "Dozens of extra shortcuts. If you like your mouse, this plugin will change that.",
-    "icon": "Keyboard",
-    "category": "Productivity",
-    "enabled": true
-  },
-  {
-    "name": "File Manager",
-    "description": "Search and organize shared files without clicking through six tabs.",
-    "icon": "Folder",
-    "category": "Productivity",
-    "enabled": false
-  },
-  {
-    "name": "Privacy Guard",
-    "description": "Blocks telemetry and tightens data controls. Microsoft won't be thrilled.",
-    "icon": "ShieldCheck",
+    "name": "Privacy",
+    "description": "Removed Teams telemetry and analytics.",
+    "icon": "HatGlasses",
     "category": "Privacy",
     "enabled": true
   },
   {
-    "name": "Status Customizer",
-    "description": "Custom status messages and calendar-based auto-switching. Look busy when you're not.",
-    "icon": "MessageSquare",
+    "name": "Never Go Idle",
+    "description": "Never go in idle mode, no more message about you being idle on Teams.",
+    "icon": "UserRoundCheck",
+    "category": "QoL",
+    "enabled": false
+  },
+  {
+    "name": "Better Gifs",
+    "description": "Swap from Giphy to Kiply which has better gifs and no restriction from Microslop.",
+    "icon": "ImagePlay",
     "category": "Communication",
+    "enabled": false
+  },
+  {
+    "name": "Better App Bar",
+    "description": "Allow you to choose what to display in the app bar (bar on the left of your screen).",
+    "icon": "ChartBar",
+    "category": "QoL",
     "enabled": false
   }
 ]
