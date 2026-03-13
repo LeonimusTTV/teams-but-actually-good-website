@@ -4,7 +4,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=5173
 
-COPY bun.lock ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
