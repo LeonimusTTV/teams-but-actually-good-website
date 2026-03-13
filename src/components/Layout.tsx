@@ -46,7 +46,7 @@ export default function Layout({ children }: LayoutProps) {
                 Themes
               </Link>
               <a
-                href="https://github.com"
+                href="https://github.com/LeonimusTTV/teams-but-actually-good"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="github-link"
@@ -91,13 +91,6 @@ export default function Layout({ children }: LayoutProps) {
                   rel="noopener noreferrer"
                 >
                   Discord
-                </a>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Discussions
                 </a>
               </div>
             </div>
