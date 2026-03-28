@@ -129,7 +129,6 @@ export default function Hero() {
     );
   });
   const [showParticleField, setShowParticleField] = useState(false);
-  console.log(pluginsData);
   const pluginCount = pluginsData.length;
   const themeCount = themesData.length;
   const themeStatValue: number | string = themeCount > 0 ? themeCount : "soon";
