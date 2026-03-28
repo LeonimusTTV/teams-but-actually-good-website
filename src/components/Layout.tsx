@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 import ScrollProgress from "./ScrollProgress";
@@ -12,17 +12,12 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  const [showCustomCursor, setShowCustomCursor] = useState(false);
+  const [showCustomCursor] = useState(
+    typeof window !== "undefined" &&
+      !window.matchMedia("(pointer: coarse)").matches,
+  );
 
   const isActive = (path: string) => location.pathname === path;
-
-  useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      return;
-    }
-
-    setShowCustomCursor(true);
-  }, []);
 
   return (
     <div className="layout">

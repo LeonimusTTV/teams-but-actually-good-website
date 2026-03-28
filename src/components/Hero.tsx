@@ -121,8 +121,15 @@ const item: Variants = {
 };
 
 export default function Hero() {
-  const [reducedEffects, setReducedEffects] = useState(true);
+  const [reducedEffects] = useState(() => {
+    return (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 767px)").matches
+    );
+  });
   const [showParticleField, setShowParticleField] = useState(false);
+  console.log(pluginsData);
   const pluginCount = pluginsData.length;
   const themeCount = themesData.length;
   const themeStatValue: number | string = themeCount > 0 ? themeCount : "soon";
@@ -135,14 +142,8 @@ export default function Hero() {
       ) => number;
       cancelIdleCallback?: (handle: number) => void;
     };
-    const shouldReduceEffects =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(max-width: 767px)").matches;
 
-    setReducedEffects(shouldReduceEffects);
-
-    if (shouldReduceEffects) {
+    if (reducedEffects) {
       return;
     }
 
@@ -168,7 +169,7 @@ export default function Hero() {
         window.clearTimeout(timeoutId);
       }
     };
-  }, []);
+  }, [reducedEffects]);
 
   return (
     <section className={`hero${reducedEffects ? " hero--reduced" : ""}`}>
