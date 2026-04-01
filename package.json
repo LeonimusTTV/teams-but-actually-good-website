@@ -11,30 +11,30 @@
     "start": "bun server.mjs"
   },
   "dependencies": {
-    "framer-motion": "^12.38.0",
-    "geist": "^1.7.0",
-    "lucide-react": "^0.577.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2"
+    "framer-motion": "=12.38.0",
+    "geist": "=1.7.0",
+    "lucide-react": "=0.577.0",
+    "react": "=19.2.4",
+    "react-dom": "=19.2.4",
+    "react-router-dom": "=7.13.2"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@rolldown/plugin-babel": "^0.2.2",
-    "@types/node": "^25.5.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^10.1.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
-    "typescript": "~6.0.2",
-    "typescript-eslint": "^8.57.2",
-    "vite": "^8.0.3"
+    "@eslint/js": "=10.0.1",
+    "@rolldown/plugin-babel": "=0.2.2",
+    "@types/node": "=25.5.0",
+    "@types/react": "=19.2.14",
+    "@types/react-dom": "=19.2.3",
+    "@vitejs/plugin-react": "=6.0.1",
+    "babel-plugin-react-compiler": "=1.0.0",
+    "eslint": "=10.1.0",
+    "eslint-plugin-react-hooks": "=7.0.1",
+    "eslint-plugin-react-refresh": "=0.5.2",
+    "globals": "=17.4.0",
+    "typescript": "=6.0.2",
+    "typescript-eslint": "=8.57.2",
+    "vite": "=8.0.3"
   },
   "overrides": {
-    "vite": "^8.0.3"
+    "vite": "=8.0.3"
   }
 }
