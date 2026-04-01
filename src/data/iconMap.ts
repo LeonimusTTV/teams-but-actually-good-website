@@ -22,6 +22,7 @@ import {
   ImagePlay,
   ChartBar,
   HatGlasses,
+  Sticker,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -49,6 +50,7 @@ const iconMap: Record<string, LucideIcon> = {
   Chrome,
   Flame,
   Compass,
+  Sticker,
 };
 
 export function getIcon(iconName: string): LucideIcon {

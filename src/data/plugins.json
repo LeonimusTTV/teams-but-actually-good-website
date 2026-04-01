@@ -19,5 +19,12 @@
     "icon": "ChartBar",
     "category": "QoL",
     "enabled": false
+  },
+  {
+    "name": "Better Input Bar",
+    "description": "Allow you to choose what to display in the input bar (bar on the bottom of your screen).",
+    "icon": "Keyboard",
+    "category": "QoL",
+    "enabled": false
   }
 ]

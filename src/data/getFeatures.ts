@@ -1,10 +1,10 @@
 import pluginsData from "./plugins.json";
-import themesData from "./themes.json";
+// import themesData from "./themes.json";
 import type { Feature } from "./types";
 
 export function getFeatures(): Feature[] {
   const pluginCount = pluginsData.length;
-  const themeCount = themesData.length;
+  // const themeCount = themesData.length;
 
   return [
     {
@@ -30,10 +30,17 @@ export function getFeatures(): Feature[] {
     },
     {
       num: "04",
-      title: `${themeCount} Themes`,
+      // ${themeCount} Themes
+      title: `Themes (soon)`,
       description:
         "Dark, light, and everything in between. Switch instantly from the settings panel.",
       icon: "Palette",
+    },
+    {
+      num: "05",
+      title: `You can use Teams`,
+      description: "Teams is not usable, finally.",
+      icon: "Sticker",
     },
     {
       num: "06",
