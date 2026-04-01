@@ -232,8 +232,8 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p className="hero-desc" variants={item}>
-              An open-source mod that strips the bloat, blocks telemetry, and
-              makes Microsoft Teams usable. One installer. No accounts. Free.
+              An open-source mod that strips the bloat and makes Microsoft Teams
+              usable. One installer. No accounts. Free.
             </motion.p>
 
             <motion.div className="hero-stats" variants={item}>
@@ -248,13 +248,6 @@ export default function Hero() {
                 value={themeStatValue}
                 label="themes"
                 delay={500}
-                disabled={reducedEffects}
-              />
-              <div className="stat-sep" />
-              <CountStat
-                value={0}
-                label="telemetry"
-                delay={700}
                 disabled={reducedEffects}
               />
               <div className="stat-sep" />
@@ -338,12 +331,6 @@ export default function Hero() {
                         name: "Bob",
                         time: "9:42 AM",
                         msg: "Installed the mod. Night and day difference 🙏",
-                      },
-                      {
-                        color: "#a78bfa",
-                        name: "Carol",
-                        time: "9:43 AM",
-                        msg: "No telemetry?? Microsoft is going to hate this lol",
                       },
                       {
                         color: "#f59e0b",

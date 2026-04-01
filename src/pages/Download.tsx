@@ -173,10 +173,6 @@ export default function Download() {
                   <span className="ta">›</span> Applying {pluginCount} plugins…{" "}
                   <span className="tg">done</span>
                 </div>
-                <div className="tline tline-5">
-                  <span className="ta">›</span> Blocking telemetry endpoints…{" "}
-                  <span className="tg">done</span>
-                </div>
                 <div className="tline tline-6">
                   <span className="ta">›</span>{" "}
                   <span className="tg">All done. Launch Teams to begin.</span>

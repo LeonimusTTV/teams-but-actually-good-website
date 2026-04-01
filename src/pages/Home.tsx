@@ -17,8 +17,8 @@ export default function Home() {
             <span className="cta-label">Ready to stop suffering?</span>
             <h2>Just install it.</h2>
             <p>
-              No accounts. No telemetry. If you hate it, uninstall it, Teams
-              goes back to exactly how Microsoft intended. For better or worse.
+              No accounts. If you hate it, uninstall it, Teams goes back to
+              exactly how Microsoft intended. For better or worse.
             </p>
             <div className="cta-buttons">
               <Link to="/download" className="btn btn-primary">

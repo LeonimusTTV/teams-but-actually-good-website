@@ -36,13 +36,6 @@ export function getFeatures(): Feature[] {
       icon: "Palette",
     },
     {
-      num: "05",
-      title: "No Telemetry",
-      description:
-        "Microsoft already knows enough about you. We block what we can.",
-      icon: "ShieldCheck",
-    },
-    {
       num: "06",
       title: "One Installer",
       description:

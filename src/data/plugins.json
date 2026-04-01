@@ -1,12 +1,5 @@
 [
   {
-    "name": "Privacy",
-    "description": "Removed Teams telemetry and analytics.",
-    "icon": "HatGlasses",
-    "category": "Privacy",
-    "enabled": true
-  },
-  {
     "name": "Never Go Idle",
     "description": "Never go in idle mode, no more message about you being idle on Teams.",
     "icon": "UserRoundCheck",
