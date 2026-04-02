@@ -9,7 +9,7 @@ import Reveal from "../components/Reveal";
 import { useEffect, useState } from "react";
 
 const META_URL =
-  "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/injection.meta.json";
+  "https://api.github.com/repos/LeonimusTTV/teams-but-actually-good/releases/latest";
 
 const platforms = platformsData;
 const pluginCount = pluginsData.length;
@@ -29,9 +29,9 @@ export default function Download() {
 
         return response.json();
       })
-      .then((data: { version?: string }) => {
-        if (data.version) {
-          setVersion(data.version);
+      .then((data: { tag_name?: string }) => {
+        if (data.tag_name) {
+          setVersion(data.tag_name.replace(/^v/, ""));
         }
       })
       .catch((error: unknown) => {
