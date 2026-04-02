@@ -96,6 +96,16 @@ export default function Download() {
                       >
                         {platform.label} <ArrowRight size={14} />
                       </button>
+                      {platform.storeUrl && (
+                        <button
+                          className="btn btn-secondary platform-btn"
+                          onClick={() => {
+                            window.open(platform.storeUrl, "_blank");
+                          }}
+                        >
+                          {platform.storeLabel} <ArrowRight size={14} />
+                        </button>
+                      )}
                     </div>
                   </Reveal>
                 );

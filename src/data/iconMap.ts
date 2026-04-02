@@ -18,6 +18,7 @@ import {
   Chrome,
   Flame,
   Compass,
+  Globe2,
   UserRoundCheck,
   ImagePlay,
   ChartBar,
@@ -50,6 +51,7 @@ const iconMap: Record<string, LucideIcon> = {
   Chrome,
   Flame,
   Compass,
+  Globe2,
   Sticker,
 };
 
