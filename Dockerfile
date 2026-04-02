@@ -10,6 +10,6 @@ RUN bun install --frozen-lockfile
 COPY . .
 RUN bun run build
 
-EXPOSE 5173
+EXPOSE 4173
 
-CMD ["bun", "run", "start"]
+CMD ["bun", "run", "preview"]
