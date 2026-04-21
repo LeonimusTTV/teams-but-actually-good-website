@@ -49,9 +49,7 @@
     "requirement": "Microsoft Edge · v88+",
     "label": "Add to Edge",
     "extension": ".zip",
-    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip",
-    "storeLabel": "Edge Add-ons",
-    "storeUrl": "https://microsoftedge.microsoft.com/addons/detail/TODO"
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip"
   },
   {
     "icon": "Compass",
