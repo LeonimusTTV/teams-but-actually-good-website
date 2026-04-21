@@ -29,7 +29,9 @@
     "requirement": "Chrome / Chromium · v88+",
     "label": "Add to Chrome",
     "extension": ".zip",
-    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip"
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip",
+    "storeLabel": "Chrome Web Store",
+    "storeUrl": "https://chromewebstore.google.com/detail/ahbiodnejgedaflhonhabedfhmgigobc"
   },
   {
     "icon": "Flame",
@@ -37,7 +39,17 @@
     "requirement": "Firefox · v78 or later",
     "label": "Add to Firefox",
     "extension": ".zip",
-    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-firefox.zip"
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-firefox.zip",
+    "storeLabel": "Firefox Add-ons",
+    "storeUrl": "https://addons.mozilla.org/en-US/firefox/addon/teams-but-actually-good/"
+  },
+  {
+    "icon": "Globe2",
+    "name": "Edge",
+    "requirement": "Microsoft Edge · v88+",
+    "label": "Add to Edge",
+    "extension": ".zip",
+    "url": "https://github.com/LeonimusTTV/teams-but-actually-good/releases/latest/download/extension-chrome.zip"
   },
   {
     "icon": "Compass",

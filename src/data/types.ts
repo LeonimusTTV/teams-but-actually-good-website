@@ -34,4 +34,6 @@ export interface Platform {
   label: string;
   extension: string;
   url: string;
+  storeUrl?: string;
+  storeLabel?: string;
 }
