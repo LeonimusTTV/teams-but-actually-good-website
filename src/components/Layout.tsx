@@ -63,6 +63,14 @@ export default function Layout({ children }: LayoutProps) {
                 Themes
               </Link>
               <a
+                href="https://docs.teamsbutactuallygood.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="docs-link"
+              >
+                Docs
+              </a>
+              <a
                 href="https://github.com/LeonimusTTV/teams-but-actually-good"
                 target="_blank"
                 rel="noopener noreferrer"
