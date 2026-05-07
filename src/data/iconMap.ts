@@ -24,10 +24,14 @@ import {
   ChartBar,
   HatGlasses,
   Sticker,
+  Cog,
+  UserStar,
+  UserPen,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
+  Cog,
   HatGlasses,
   ChartBar,
   ImagePlay,
@@ -53,6 +57,8 @@ const iconMap: Record<string, LucideIcon> = {
   Compass,
   Globe2,
   Sticker,
+  UserStar,
+  UserPen,
 };
 
 export function getIcon(iconName: string): LucideIcon {
