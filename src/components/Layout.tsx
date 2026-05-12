@@ -99,7 +99,21 @@ export default function Layout({ children }: LayoutProps) {
                 <Link to="/plugins">Plugins</Link>
                 <Link to="/themes">Themes</Link>
                 <a
-                  href="https://github.com"
+                  href="https://docs.teamsbutactuallygood.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Documentation
+                </a>
+                <a
+                  href="https://docs.teamsbutactuallygood.dev/faq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  FAQ
+                </a>
+                <a
+                  href="https://github.com/LeonimusTTV/teams-but-actually-good"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

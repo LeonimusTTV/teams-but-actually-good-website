@@ -2,6 +2,8 @@
 
 Website for [Teams but (actually) good](https://github.com/LeonimusTTV/teams-but-actually-good)
 
+https://teamsbutactuallygood.dev/
+
 ## Dev
 
 ```bash
