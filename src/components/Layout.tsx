@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 import ScrollProgress from "./ScrollProgress";
@@ -17,6 +17,30 @@ export default function Layout({ children }: LayoutProps) {
       !window.matchMedia("(pointer: coarse)").matches,
   );
 
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const THRESHOLD = 10;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < THRESHOLD) {
+        setHeaderHidden(false);
+      } else if (currentScrollY > lastScrollY.current + THRESHOLD) {
+        setHeaderHidden(true);
+      } else if (currentScrollY < lastScrollY.current - THRESHOLD) {
+        setHeaderHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -28,7 +52,7 @@ export default function Layout({ children }: LayoutProps) {
       ) : null}
       <ScrollProgress />
 
-      <header className="header">
+      <header className={`header${headerHidden ? " header--hidden" : ""}`}>
         <div className="container">
           <nav className="nav">
             <Link to="/" className="logo">
