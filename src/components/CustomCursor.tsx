@@ -6,6 +6,9 @@ export default function CustomCursor() {
   const reticleRef = useRef<HTMLDivElement>(null);
   const coordsRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const isCoarse = useState(
+    () => window.matchMedia("(pointer: coarse)").matches,
+  )[0];
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
@@ -137,6 +140,8 @@ export default function CustomCursor() {
       document.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
+
+  if (isCoarse) return null;
 
   return (
     <>
