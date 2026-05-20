@@ -330,11 +330,6 @@ body::before {
   transform-origin: left;
 }
 
-/* Override existing active underline (now handled above) */
-.nav-links a.active::after {
-  bottom: -0.5rem;
-}
-
 /* ─── Smooth scrolling ─── */
 html {
   scroll-behavior: smooth;
