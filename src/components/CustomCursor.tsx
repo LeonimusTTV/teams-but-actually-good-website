@@ -20,6 +20,7 @@ export default function CustomCursor() {
     let rafId: number;
     let isHovering = false;
     let isVisible = false;
+    let lastTouchTime = 0;
 
     const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
 
@@ -35,7 +36,16 @@ export default function CustomCursor() {
       rafId = requestAnimationFrame(animate);
     };
 
+    const onTouchStart = () => {
+      lastTouchTime = Date.now();
+      if (isVisible) {
+        isVisible = false;
+        setVisible(false);
+      }
+    };
+
     const onMouseMove = (e: MouseEvent) => {
+      if (Date.now() - lastTouchTime < 500) return;
       mouseX = e.clientX;
       mouseY = e.clientY;
       setPos(dotRef.current, mouseX, mouseY);
@@ -54,6 +64,7 @@ export default function CustomCursor() {
     };
 
     const onMouseEnter = () => {
+      if (Date.now() - lastTouchTime < 500) return;
       isVisible = true;
       setVisible(true);
     };
@@ -89,6 +100,7 @@ export default function CustomCursor() {
       dotRef.current?.classList.remove("cursor-dot--click");
     };
 
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseenter", onMouseEnter);
     document.addEventListener("mouseleave", onMouseLeave);
@@ -131,6 +143,7 @@ export default function CustomCursor() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      document.removeEventListener("touchstart", onTouchStart);
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
