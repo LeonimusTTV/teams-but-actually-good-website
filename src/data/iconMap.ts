@@ -27,6 +27,7 @@ import {
   Cog,
   UserStar,
   UserPen,
+  Copy,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -59,6 +60,7 @@ const iconMap: Record<string, LucideIcon> = {
   Sticker,
   UserStar,
   UserPen,
+  Copy,
 };
 
 export function getIcon(iconName: string): LucideIcon {

@@ -47,5 +47,12 @@
     "icon": "UserPen",
     "category": "Personalization",
     "enabled": false
+  },
+  {
+    "name": "Copy Message",
+    "description": "Allow you to copy messages easily.",
+    "icon": "Copy",
+    "category": "Interface",
+    "enabled": false
   }
 ]
