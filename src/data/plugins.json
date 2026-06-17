@@ -54,5 +54,12 @@
     "icon": "Copy",
     "category": "Interface",
     "enabled": false
+  },
+  {
+    "name": "Custom Emojis",
+    "description": "Allow to upload custom emojis into Teams (people can see them).",
+    "icon": "SmilePlus",
+    "category": "Personalization",
+    "enabled": false
   }
 ]

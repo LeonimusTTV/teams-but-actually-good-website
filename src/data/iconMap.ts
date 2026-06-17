@@ -28,6 +28,7 @@ import {
   UserStar,
   UserPen,
   Copy,
+  SmilePlus,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -61,6 +62,7 @@ const iconMap: Record<string, LucideIcon> = {
   UserStar,
   UserPen,
   Copy,
+  SmilePlus,
 };
 
 export function getIcon(iconName: string): LucideIcon {
