@@ -6,6 +6,7 @@ import { getIcon } from "../data/iconMap";
 import PageHero from "../components/PageHero";
 import PageTransition from "../components/PageTransition";
 import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
 import { useEffect, useState } from "react";
 
 const META_URL =
@@ -45,6 +46,11 @@ export default function Download() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Download"
+        description="Download Teams but (actually) good for Windows, macOS, Linux, Chrome, and Firefox. Free, open-source, no account or license key required."
+        path="/download"
+      />
       <div className="download-page">
         <PageHero
           label="Download"

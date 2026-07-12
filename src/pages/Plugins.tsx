@@ -5,6 +5,7 @@ import PageHero from "../components/PageHero";
 import InfoGrid from "../components/InfoGrid";
 import PageTransition from "../components/PageTransition";
 import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
 
 const plugins = pluginsData;
 const enabledCount = plugins.filter((p) => p.enabled).length;
@@ -31,6 +32,11 @@ const infoCards = [
 export default function Plugins() {
   return (
     <PageTransition>
+      <Seo
+        title="Plugins"
+        description={`Browse all ${plugins.length} quality-of-life plugins for Teams but (actually) good — what each one does and which are enabled by default.`}
+        path="/plugins"
+      />
       <div className="plugins-page">
         <PageHero
           label="Plugins"

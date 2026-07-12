@@ -1,0 +1,18 @@
+# Teams but (actually) good
+
+> Teams but (actually) good is a free, open-source Microsoft Teams mod for Windows, macOS, Linux, Chrome, and Firefox that removes bloat and adds quality-of-life plugins and themes.
+
+Teams but (actually) good wraps the official Microsoft Teams client in a lightweight native shell (Windows, macOS, Linux) or a browser extension (Chrome, Firefox) and layers on opt-in plugins and themes that fix long-standing annoyances, such as being forced into idle status, a restrictive GIF picker, and a cluttered app bar. There is no separate account, no license key, and no change to how Microsoft Teams itself authenticates or stores data; uninstalling restores stock Teams behavior. The project is open source, licensed under AGPL-3.0.
+
+## Docs
+
+- [Homepage](https://teamsbutactuallygood.dev/): Overview, key features, and quick links.
+- [Download](https://teamsbutactuallygood.dev/download): Installers and extensions for Windows, macOS, Linux, Chrome, and Firefox.
+- [Plugins](https://teamsbutactuallygood.dev/plugins): Full list of quality-of-life plugins, what each one does, and which are enabled by default.
+- [Themes](https://teamsbutactuallygood.dev/themes): Built-in visual themes for the Teams client.
+- [Full documentation](https://docs.teamsbutactuallygood.dev/): User and developer documentation.
+
+## Optional
+
+- [Source code and issues](https://github.com/LeonimusTTV/teams-but-actually-good): GitHub repository, releases, and issue tracker.
+- [License (AGPL-3.0)](https://github.com/LeonimusTTV/teams-but-actually-good/blob/main/LICENSE): Full license text.

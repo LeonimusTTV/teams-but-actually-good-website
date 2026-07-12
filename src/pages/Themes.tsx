@@ -6,6 +6,7 @@ import PageHero from "../components/PageHero";
 import InfoGrid from "../components/InfoGrid";
 import PageTransition from "../components/PageTransition";
 import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
 
 const themes: Theme[] = themesData;
 
@@ -214,6 +215,11 @@ export default function Themes() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Themes"
+        description="Built-in visual themes for Teams but (actually) good. Switch instantly from the settings panel, no restart required."
+        path="/themes"
+      />
       <div className="themes-page">
         <PageHero
           label="Themes"

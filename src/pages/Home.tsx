@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import PageTransition from "../components/PageTransition";
 import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
 
 export default function Home() {
   return (
     <PageTransition>
+      <Seo
+        title="Teams but (actually) good — A faster, lighter Microsoft Teams"
+        description="Teams but (actually) good is a free, open-source Microsoft Teams mod for Windows, macOS, Linux, Chrome, and Firefox that removes bloat and adds quality-of-life plugins and themes."
+        path="/"
+      />
       <Hero />
       <FeatureGrid />
 
